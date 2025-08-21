@@ -9,22 +9,22 @@ const guardFeatures = [
     {
         icon: <CalendarClock className="h-10 w-10 text-primary" />,
         title: "Horarios y Turnos",
-        description: "Consulta horarios y recibe notificaciones de cambios.",
+        description: "Consulta tus horarios de trabajo actualizados y recibe notificaciones cuando tengas cambios en la programación.",
     },
     {
         icon: <FileText className="h-10 w-10 text-primary" />,
         title: "Reporte de Novedades",
-        description: "Incapacidades, vacaciones o permisos; todo llega a operaciones.",
+        description: "Informa incapacidades, vacaciones o situaciones especiales. Todo llega directo al área de operaciones.",
     },
     {
         icon: <BookOpenCheck className="h-10 w-10 text-primary" />,
         title: "Minuta Digital",
-        description: "Registra eventos e incidentes con evidencia en tiempo real.",
+        description: "Registra eventos o incidentes durante tu turno y facilita reportes en tiempo real a la central.",
     },
     {
         icon: <MessageSquare className="h-10 w-10 text-primary" />,
         title: "Comunicación Directa",
-        description: "Chat seguro con supervisores y alertas en emergencias.",
+        description: "Chat seguro con supervisores y alertas instantáneas en caso de emergencias.",
     },
 ];
 
@@ -41,7 +41,7 @@ export default function GuardiaPage() {
                                     Tu trabajo, siempre en tu mano
                                 </h1>
                                 <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Control total de turnos y comunicación en tiempo real.
+                                    Con la app de Defendra tendrás control total de tus turnos y comunicación en tiempo real.
                                 </p>
                             </div>
                         </div>
@@ -50,7 +50,7 @@ export default function GuardiaPage() {
 
                 <section className="w-full pb-12 md:pb-24 lg:pb-32">
                     <div className="container px-4 md:px-6">
-                        <div className="mx-auto grid max-w-5xl items-center gap-8 sm:grid-cols-2 md:grid-cols-4">
+                        <div className="mx-auto grid max-w-5xl items-start gap-y-12 sm:grid-cols-2 md:grid-cols-2 lg:gap-x-16">
                             {guardFeatures.map((feature, index) => (
                                  <div key={index} className="grid gap-1 text-center">
                                     <div className="flex justify-center items-center mb-4">
@@ -67,7 +67,7 @@ export default function GuardiaPage() {
                 <section className="w-full pb-12 md:pb-24 lg:pb-32 text-center">
                     <div className="container">
                         <Button asChild size="lg">
-                            <Link href="/#contacto">Quiero ser parte de Defendra</Link>
+                            <Link href="#">Iniciar Registro</Link>
                         </Button>
                     </div>
                 </section>

@@ -1,9 +1,6 @@
 import { Header } from "@/components/landing/header";
 import { Footer } from "@/components/landing/footer";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { CalendarDays, ClipboardCheck, Building, BarChart, Users, GanttChartSquare, FileText, BotMessageSquare } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { GanttChartSquare, BotMessageSquare, Users, BarChart } from "lucide-react";
 
 const adminFeatures = [
     {
@@ -13,8 +10,8 @@ const adminFeatures = [
     },
     {
         icon: <BotMessageSquare className="h-9 w-9 text-primary" />,
-        title: "Ficha Técnica (generada por IA)",
-        description: "Extracción OCR/IA desde PDF/imágenes para estructurar consignas, checklist, riesgos y protocolos.",
+        title: "Ficha Técnica (generada/validada por IA)",
+        description: "Extracción OCR/IA desde PDF/imágenes para estructurar consignas, checklist, riesgos y protocolos del puesto.",
     },
     {
         icon: <Users className="h-9 w-9 text-primary" />,
@@ -24,7 +21,7 @@ const adminFeatures = [
     {
         icon: <BarChart className="h-9 w-9 text-primary" />,
         title: "Reportes y KPIs",
-        description: "Indicadores de cobertura, incidentes y desempeño. Exportación genérica para tu contabilidad.",
+        description: "Cobertura, incidentes y desempeño. Exportación genérica de datos (marca blanca) para tu contabilidad.",
     },
 ];
 
@@ -50,10 +47,10 @@ export default function AdminPage() {
 
                 <section className="w-full pb-12 md:pb-24 lg:pb-32">
                     <div className="container px-4 md:px-6">
-                         <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:grid-cols-4">
+                         <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:grid-cols-4 lg:gap-12">
                             {adminFeatures.map((feature, index) => (
-                                <div key={index} className="grid gap-1 text-center">
-                                    <div className="flex justify-center items-center mb-4">
+                                <div key={index} className="grid gap-2 text-center">
+                                    <div className="flex justify-center items-center mb-2">
                                         {feature.icon}
                                     </div>
                                     <h3 className="text-xl font-bold font-headline">{feature.title}</h3>

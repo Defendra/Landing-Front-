@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { href: "#inicio", label: "Inicio", id: "inicio" },
   { href: "#solucion", label: "Solución", id: "solucion" },
-  { href: "#perfiles", label: "Perfiles", id: "perfiles" },
+  { href: "/perfiles", label: "Perfiles", id: "perfiles" },
   { href: "#contacto", label: "Contacto", id: "contacto" },
 ];
 
@@ -58,6 +58,13 @@ export function Header() {
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+
+    if (href.startsWith('/')) {
+        router.push(href);
+        if (isSheetOpen) setIsSheetOpen(false);
+        return;
+    }
+
     const targetId = href.substring(1);
     
     if (pathname !== '/') {
@@ -76,35 +83,48 @@ export function Header() {
 
   React.useEffect(() => {
     const handleScrollAndLoad = () => {
-        if (pathname !== '/') return;
+        if (pathname !== '/') {
+          setActiveSection('');
+          return;
+        };
 
         const sections = navLinks.map(link => document.getElementById(link.id)).filter(Boolean);
-        let currentSection = 'inicio';
+        let currentSection = '';
+        
+        const scrollPosition = window.scrollY + 100;
 
-        sections.forEach((section) => {
-            if(section){
-                const sectionTop = section.offsetTop - 100;
-                if (window.scrollY >= sectionTop) {
+        for (const section of sections) {
+            if (section) {
+                if (section.offsetTop <= scrollPosition) {
                     currentSection = section.id;
                 }
             }
-        });
+        }
+        
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+            const lastSection = navLinks.find(l => l.id === 'contacto' && document.getElementById(l.id));
+            if(lastSection) currentSection = lastSection.id;
+        }
+
+        if (scrollPosition < 100) {
+            currentSection = 'inicio';
+        }
+
         setActiveSection(currentSection);
     }
     
-    handleScrollAndLoad(); // set on initial load
+    handleScrollAndLoad(); 
     window.addEventListener("scroll", handleScrollAndLoad);
     return () => window.removeEventListener("scroll", handleScrollAndLoad);
   }, [pathname]);
 
-  const isLanding = pathname === '/';
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         <Logo />
         <div className="flex items-center gap-4">
-          {isLanding && <NavMenu activeSection={activeSection} onLinkClick={handleLinkClick} />}
+          <NavMenu activeSection={activeSection} onLinkClick={handleLinkClick} />
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden shrink-0">
