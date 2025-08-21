@@ -6,27 +6,32 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+section[id] {
+  scroll-margin-top: 80px; 
+}
+
+
 @layer base {
   :root {
-    --background: 210 20% 98%;
+    --background: 180 52% 96%;
     --foreground: 224 71.4% 4.1%;
-    --card: 210 20% 98%;
+    --card: 180 52% 96%;
     --card-foreground: 224 71.4% 4.1%;
-    --popover: 210 20% 98%;
+    --popover: 180 52% 96%;
     --popover-foreground: 224 71.4% 4.1%;
-    --primary: 221 83.2% 53.3%;
+    --primary: 180 100% 25%;
     --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
+    --secondary: 180 20% 90%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 220 14.3% 95.9%;
+    --muted: 180 20% 90%;
     --muted-foreground: 220 8.9% 46.1%;
-    --accent: 210 20% 90%;
+    --accent: 30 79% 62%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 221 83.2% 53.3%;
+    --border: 180 20% 85%;
+    --input: 180 20% 85%;
+    --ring: 180 100% 25%;
     --radius: 0.5rem;
     --chart-1: 221 83% 53%;
     --chart-2: 160 60% 45%;

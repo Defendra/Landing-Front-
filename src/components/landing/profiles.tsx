@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "../ui/button";
 
 export function Profiles() {
@@ -31,10 +31,10 @@ export function Profiles() {
               <div className="space-y-2">
                 <h3 className="font-headline text-2xl font-bold">Para el Guardia</h3>
                 <p className="text-foreground/80">
-                  Accede a tus horarios, consulta turnos, reporta novedades y mantente conectado con la central de operaciones. Todo desde tu móvil.
+                  Accede a horarios, consulta turnos, reporta minutas y novedades. Todo desde tu móvil.
                 </p>
               </div>
-              <Button asChild variant="outline">
+              <Button asChild variant="outline" size="lg">
                 <Link href="/guardia">Ver funciones de Guardia</Link>
               </Button>
             </CardContent>
@@ -52,10 +52,10 @@ export function Profiles() {
               <div className="space-y-2">
                 <h3 className="font-headline text-2xl font-bold">Para el Administrador</h3>
                 <p className="text-foreground/80">
-                  Programa turnos, controla la asistencia, genera reportes detallados y analiza el rendimiento de tu equipo desde un dashboard centralizado.
+                   Configura operaciones, programa personal, gestiona novedades y visualiza KPIs en tiempo real.
                 </p>
               </div>
-              <Button asChild>
+              <Button asChild variant="outline" size="lg">
                 <Link href="/admin">Ver funciones de Admin</Link>
               </Button>
             </CardContent>

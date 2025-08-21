@@ -4,15 +4,15 @@ import Link from "next/link";
 import { Menu, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#solucion", label: "Solución" },
-  { href: "#perfiles", label: "Perfiles" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "#inicio", label: "Inicio", id: "inicio" },
+  { href: "#solucion", label: "Solución", id: "solucion" },
+  { href: "#perfiles", label: "Perfiles", id: "perfiles" },
+  { href: "#contacto", label: "Contacto", id: "contacto" },
 ];
 
 function Logo() {
@@ -33,18 +33,17 @@ function NavMenu({ isMobile = false, activeSection, onLinkClick }: { isMobile?: 
   return (
     <NavElement className={containerClasses}>
       {navLinks.map((link) => (
-        <Link
+        <a
           key={link.href}
           href={link.href}
           onClick={(e) => onLinkClick(e, link.href)}
           className={cn(
-            "transition-colors hover:text-foreground",
-            activeSection === link.href.substring(1) ? "text-foreground font-semibold" : "text-foreground/80"
+            "transition-colors hover:text-foreground cursor-pointer",
+            activeSection === link.id ? "text-foreground font-semibold" : "text-foreground/80"
           )}
-          prefetch={false}
         >
           {link.label}
-        </Link>
+        </a>
       ))}
     </NavElement>
   );
@@ -52,49 +51,50 @@ function NavMenu({ isMobile = false, activeSection, onLinkClick }: { isMobile?: 
 
 export function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [activeSection, setActiveSection] = React.useState('inicio');
   const [isSheetOpen, setIsSheetOpen] = React.useState(false);
 
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (pathname === '/') {
-        e.preventDefault();
-        const targetId = href.substring(1);
+    e.preventDefault();
+    const targetId = href.substring(1);
+    
+    if (pathname !== '/') {
+        router.push('/#' + targetId);
+    } else {
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
             const yOffset = -80; 
             const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
             window.scrollTo({top: y, behavior: 'smooth'});
             setActiveSection(targetId);
-            if (isSheetOpen) setIsSheetOpen(false);
         }
     }
+    if (isSheetOpen) setIsSheetOpen(false);
   };
 
   React.useEffect(() => {
-    if (pathname !== '/') return;
+    const handleScrollAndLoad = () => {
+        if (pathname !== '/') return;
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
-                }
-            });
-        },
-        { rootMargin: "-50% 0px -50% 0px" } 
-    );
+        const sections = navLinks.map(link => document.getElementById(link.id)).filter(Boolean);
+        let currentSection = 'inicio';
 
-    const sections = navLinks.map(link => document.getElementById(link.href.substring(1))).filter(Boolean);
-    sections.forEach((section) => {
-        if (section) observer.observe(section);
-    });
-
-    return () => {
         sections.forEach((section) => {
-            if (section) observer.unobserve(section);
+            if(section){
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.id;
+                }
+            }
         });
-    };
+        setActiveSection(currentSection);
+    }
+    
+    handleScrollAndLoad(); // set on initial load
+    window.addEventListener("scroll", handleScrollAndLoad);
+    return () => window.removeEventListener("scroll", handleScrollAndLoad);
   }, [pathname]);
 
   const isLanding = pathname === '/';
@@ -115,18 +115,12 @@ export function Header() {
             <SheetContent side="right">
               <nav className="grid gap-6 text-lg font-medium mt-8">
                 <Logo />
-                {isLanding ? (
-                    <NavMenu isMobile={true} activeSection={activeSection} onLinkClick={handleLinkClick} />
-                ) : (
-                   <div className="grid gap-6 text-lg font-medium">
-                     <Link href="/" className="text-foreground/80 transition-colors hover:text-foreground">Inicio</Link>
-                   </div>
-                )}
+                 <NavMenu isMobile={true} activeSection={activeSection} onLinkClick={handleLinkClick} />
               </nav>
             </SheetContent>
           </Sheet>
           <Button asChild className="hidden md:flex">
-            <Link href="#">Iniciar Sesión</Link>
+            <Link href="/login">Iniciar Sesión</Link>
           </Button>
         </div>
       </div>
