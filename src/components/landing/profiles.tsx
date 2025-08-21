@@ -55,7 +55,9 @@ export function Profiles() {
                   Programa turnos, controla la asistencia, genera reportes detallados y analiza el rendimiento de tu equipo desde un dashboard centralizado.
                 </p>
               </div>
-              <Button>Ver funciones de Admin</Button>
+              <Button asChild>
+                <Link href="/admin">Ver funciones de Admin</Link>
+              </Button>
             </CardContent>
           </Card>
         </div>
