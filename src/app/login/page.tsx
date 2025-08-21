@@ -7,10 +7,18 @@ import { Camera, FileText, BookUser } from "lucide-react";
 
 export default function LoginChoicePage() {
     return (
-        <div className="flex min-h-screen w-full flex-col bg-gray-50 dark:bg-black">
+        <div className="flex min-h-screen w-full flex-col bg-secondary/50">
             <Header />
             <main className="flex-1 flex items-center justify-center py-12 px-4">
                 <div className="w-full max-w-5xl mx-auto">
+                     <div className="text-center mb-8">
+                        <h1 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                           Bienvenido a Defendra
+                        </h1>
+                        <p className="mx-auto max-w-[700px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                           Selecciona tu tipo de perfil para continuar.
+                        </p>
+                    </div>
                     <div className="grid gap-8 md:grid-cols-2">
                         <Card className="flex flex-col shadow-lg">
                             <CardHeader>
@@ -21,7 +29,7 @@ export default function LoginChoicePage() {
                                     Tu empresa gestiona tu registro y te brinda credenciales de acceso.
                                 </CardDescription>
                                 <Button asChild className="w-full">
-                                    <Link href="#">Ingresar como Administrador</Link>
+                                    <Link href="/admin/login">Ingresar como Administrador</Link>
                                 </Button>
                                 <p className="text-xs text-muted-foreground mt-3">
                                     ¿No tienes usuario? Contacta al responsable de tu empresa.
@@ -36,7 +44,7 @@ export default function LoginChoicePage() {
                                 <CardDescription className="mb-6 flex-grow">
                                     Regístrate fácilmente con verificación de identidad y carga de documentos.
                                 </CardDescription>
-                                <ul className="text-sm text-muted-foreground mb-6 space-y-2 list-inside">
+                                <ul className="text-sm text-muted-foreground mb-6 space-y-2 list-inside list-disc pl-4">
                                     <li className="flex items-center gap-2"><Camera /> Selfie biométrica + documento</li>
                                     <li className="flex items-center gap-2"><FileText /> Datos de contacto y bancarios</li>
                                     <li className="flex items-center gap-2"><BookUser /> Cursos/licencias y soportes</li>
