@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -9,11 +10,12 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#solucion", label: "Solución", id: "solucion" },
-  { href: "#roles", label: "Roles", id: "roles" },
-  { href: "#audiences", label: "Audiencias", id: "audiences" },
-  { href: "#testimonios", label: "Clientes", id: "testimonios" },
-  { href: "#contacto", label: "Contacto", id: "contacto" },
+  { href: "/#solucion", label: "Solución", id: "solucion" },
+  { href: "/#roles", label: "Roles", id: "roles" },
+  { href: "/#audiences", label: "Audiencias", id: "audiences" },
+  { href: "/#testimonios", label: "Clientes", id: "testimonios" },
+  { href: "/blog", label: "Blog", id: "blog" },
+  { href: "/#contacto", label: "Contacto", id: "contacto" },
 ];
 
 function Logo() {
@@ -40,7 +42,9 @@ function NavMenu({ isMobile = false, activeSection, onLinkClick }: { isMobile?: 
           onClick={(e) => onLinkClick(e, link.href)}
           className={cn(
             "transition-colors hover:text-primary cursor-pointer",
-            activeSection === link.id ? "text-primary font-semibold" : "text-muted-foreground"
+            (activeSection === link.id || (link.id === 'blog' && usePathname().startsWith('/blog')))
+              ? "text-primary font-semibold" 
+              : "text-muted-foreground"
           )}
         >
           {link.label}
@@ -58,38 +62,45 @@ export function Header() {
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    const isBlogPage = pathname.startsWith('/blog');
 
-    if (href.startsWith('/')) {
-        router.push(href);
+    if (href.startsWith('/blog')) {
+        router.push('/blog');
         if (isSheetOpen) setIsSheetOpen(false);
         return;
     }
 
-    const targetId = href.substring(1);
-    
-    if (pathname !== '/') {
-        router.push('/#' + targetId);
-    } else {
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            const yOffset = -80; 
-            const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({top: y, behavior: 'smooth'});
-            setActiveSection(targetId);
+    if (href.startsWith('/#')) {
+        const targetId = href.substring(2);
+        if (pathname !== '/') {
+            router.push('/#' + targetId);
+        } else {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                const yOffset = -80; 
+                const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
         }
+    } else {
+         router.push(href);
     }
+    
     if (isSheetOpen) setIsSheetOpen(false);
   };
 
   React.useEffect(() => {
     const handleScrollAndLoad = () => {
         if (pathname !== '/') {
-          const pathId = pathname.replace('/', '');
+          const pathId = pathname.split('/')[1] || 'inicio';
           setActiveSection(pathId);
           return;
         };
 
-        const sections = navLinks.map(link => document.getElementById(link.id)).filter(Boolean);
+        const sections = navLinks
+            .map(link => link.id && document.getElementById(link.id))
+            .filter(Boolean);
+
         let currentSection = '';
         
         const scrollPosition = window.scrollY + 100;
@@ -110,7 +121,6 @@ export function Header() {
         if (scrollPosition < 100) {
             currentSection = 'inicio';
         }
-
         setActiveSection(currentSection);
     }
     

@@ -1,16 +1,18 @@
 
-import { Header } from '@/components/landing/header';
-import { Hero } from '@/components/landing/hero';
-import { ValueProposition } from '@/components/landing/value-proposition';
-import { Profiles } from '@/components/landing/profiles';
-import { Footer } from '@/components/landing/footer';
-import { Contact } from '@/components/landing/contact';
-import { Testimonials } from '@/components/landing/testimonials';
-import { TargetAudience } from '@/components/landing/target-audience';
 import { BlogPanel, BlogPost } from '@/components/landing/blog';
+import { Footer } from '@/components/landing/footer';
+import { Header } from '@/components/landing/header';
 
+export const metadata = {
+  title: 'Blog | Defendra',
+  description:
+    'Tendencias, regulación e innovación en seguridad privada. Supervigilancia, Decreto 356, operaciones y IA.',
+};
+
+// En un caso real, esto haría un fetch a un CMS o a Firestore.
+// Por ahora, usamos los mismos datos mock de la landing.
 const mockPosts: BlogPost[] = [
-  {
+    {
     id: '1',
     slug: 'que-es-la-supervigilancia',
     title: '¿Qué es la Supervigilancia y por qué es vital para tu empresa?',
@@ -91,18 +93,18 @@ const mockPosts: BlogPost[] = [
 ];
 
 
-export default function Home() {
+async function getPosts(): Promise<BlogPost[]> {
+  // Simula un fetch a una API o base de datos.
+  return new Promise(resolve => setTimeout(() => resolve(mockPosts), 200));
+}
+
+export default async function BlogIndex() {
+  const posts = await getPosts();
   return (
-    <div className="flex min-h-screen w-full flex-col bg-background">
+     <div className="flex min-h-screen w-full flex-col bg-background">
       <Header />
-      <main className="flex-1">
-        <Hero />
-        <ValueProposition />
-        <Profiles />
-        <TargetAudience />
-        <Testimonials />
-        <BlogPanel posts={mockPosts} />
-        <Contact />
+      <main>
+        <BlogPanel posts={posts} />
       </main>
       <Footer />
     </div>
