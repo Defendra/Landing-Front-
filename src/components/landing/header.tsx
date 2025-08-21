@@ -1,31 +1,31 @@
 "use client";
 
-import { useState } from 'react';
 import Link from "next/link";
 import { Menu, Shield } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "#soluciones", label: "Soluciones" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#precios", label: "Precios" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#inicio", label: "Inicio" },
+  { href: "#solucion", label: "Solución" },
+  { href: "#perfiles", label: "Perfiles" },
+  { href: "#contacto", label: "Contacto" },
 ];
 
 function Logo() {
   return (
     <Link href="#" className="flex items-center gap-2" prefetch={false}>
-      <Shield className="h-6 w-6 text-primary" />
-      <span className="font-headline text-xl font-bold text-primary">Defendra</span>
+      <Shield className="h-7 w-7 text-primary" />
+      <span className="font-headline text-2xl font-bold text-gray-900 dark:text-gray-50">Defendra</span>
     </Link>
   );
 }
 
 function NavMenu({ isMobile = false }) {
   const NavElement = isMobile ? 'div' : 'nav';
-  const containerClasses = isMobile ? "flex flex-col items-start gap-4 p-4" : "hidden items-center gap-6 text-sm font-medium md:flex";
+  const containerClasses = isMobile 
+    ? "grid gap-6 text-lg font-medium" 
+    : "hidden items-center gap-6 text-sm font-medium md:flex";
 
   return (
     <NavElement className={containerClasses}>
@@ -33,7 +33,7 @@ function NavMenu({ isMobile = false }) {
         <Link
           key={link.href}
           href={link.href}
-          className="transition-colors hover:text-primary"
+          className="text-foreground/80 transition-colors hover:text-foreground"
           prefetch={false}
         >
           {link.label}
@@ -44,34 +44,29 @@ function NavMenu({ isMobile = false }) {
 }
 
 export function Header() {
-  const [isSheetOpen, setSheetOpen] = useState(false);
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         <Logo />
         <div className="flex items-center gap-4">
           <NavMenu />
-          <Button asChild className="hidden md:flex">
-            <Link href="#contacto">Contacto</Link>
-          </Button>
-          <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
+          <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden">
-                <Menu className="h-6 w-6" />
+              <Button variant="outline" size="icon" className="md:hidden shrink-0">
+                <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <div className="flex flex-col gap-4 p-4">
-                 <Logo />
-                 <NavMenu isMobile={true} />
-                 <Button asChild>
-                    <Link href="#contacto">Contacto</Link>
-                 </Button>
-              </div>
+              <nav className="grid gap-6 text-lg font-medium mt-8">
+                <Logo />
+                <NavMenu isMobile={true} />
+              </nav>
             </SheetContent>
           </Sheet>
+          <Button asChild className="hidden md:flex">
+            <Link href="#">Iniciar Sesión</Link>
+          </Button>
         </div>
       </div>
     </header>

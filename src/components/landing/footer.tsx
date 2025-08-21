@@ -3,15 +3,17 @@ import { Shield, Github, Twitter, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="w-full bg-secondary/50 dark:bg-card border-t">
-      <div className="container flex flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row md:px-6">
-        <div className="flex items-center gap-2">
-          <Shield className="h-6 w-6 text-primary" />
-          <span className="font-headline text-lg font-bold text-primary">Defendra</span>
+    <footer className="w-full border-t bg-secondary/50">
+      <div className="container flex flex-col items-center justify-between gap-6 px-4 py-10 md:flex-row md:px-6">
+        <div className="flex flex-col items-center md:items-start gap-2">
+           <div className="flex items-center gap-2">
+            <Shield className="h-6 w-6 text-primary" />
+            <span className="font-headline text-lg font-bold text-gray-900 dark:text-gray-50">Defendra</span>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Defendra. Todos los derechos reservados.
+          </p>
         </div>
-        <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Defendra. Todos los derechos reservados.
-        </p>
         <div className="flex items-center gap-4">
           <Link href="#" className="text-muted-foreground hover:text-primary" prefetch={false}>
             <Twitter className="h-5 w-5" />
