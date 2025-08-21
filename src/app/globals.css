@@ -10,6 +10,18 @@ section[id] {
   scroll-margin-top: 80px; 
 }
 
+.hero-gradient {
+  background: radial-gradient(1200px 600px at -10% -10%, #eaf2ff 0%, transparent 60%),
+              radial-gradient(800px 400px at 110% 0%, #e8fff4 0%, transparent 55%),
+              #f6fbff;
+}
+
+.dark .hero-gradient {
+    background: radial-gradient(1200px 600px at -10% -10%, hsl(var(--primary) / 0.1), transparent 60%),
+                radial-gradient(800px 400px at 110% 0%, hsl(var(--primary) / 0.1), transparent 55%),
+                hsl(var(--background));
+}
+
 
 @layer base {
   :root {
