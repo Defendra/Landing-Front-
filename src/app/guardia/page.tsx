@@ -1,3 +1,4 @@
+
 import { Header } from "@/components/landing/header";
 import { Footer } from "@/components/landing/footer";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -67,7 +68,7 @@ export default function GuardiaPage() {
                 <section className="w-full pb-12 md:pb-24 lg:pb-32 text-center">
                     <div className="container">
                         <Button asChild size="lg">
-                            <Link href="/guardia/onboarding">Iniciar Registro</Link>
+                            <Link href="/guardia/onboarding">Quiero ser parte de Defendra</Link>
                         </Button>
                     </div>
                 </section>
