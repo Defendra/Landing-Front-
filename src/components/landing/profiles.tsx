@@ -29,7 +29,7 @@ export function Profiles() {
         </div>
         <div className="mt-6">
             <Button asChild size="lg">
-                <Link href="/perfiles">Ver perfiles</Link>
+                <Link href="/perfiles">Ver perfiles en detalle</Link>
             </Button>
         </div>
       </div>
