@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "../ui/button";
 
@@ -33,7 +34,9 @@ export function Profiles() {
                   Accede a tus horarios, consulta turnos, reporta novedades y mantente conectado con la central de operaciones. Todo desde tu móvil.
                 </p>
               </div>
-              <Button variant="outline">Ver funciones de Guardia</Button>
+              <Button asChild variant="outline">
+                <Link href="/guardia">Ver funciones de Guardia</Link>
+              </Button>
             </CardContent>
           </Card>
           <Card className="flex flex-col overflow-hidden">
