@@ -1,19 +1,13 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils';
 
 const fontSans = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
-})
-
-const fontHeading = Space_Grotesk({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-heading',
 })
 
 export const metadata: Metadata = {
@@ -26,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'Defendra',
     images: [
       {
-        url: 'https://placehold.co/1200x630.png', // Reemplazar con la imagen OG real
+        url: 'https://placehold.co/1200x630.png', 
         width: 1200,
         height: 630,
         alt: 'Dashboard de Defendra mostrando KPIs de seguridad'
@@ -39,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Defendra | La Nueva Era de la Seguridad Privada en Colombia',
     description: 'Digitalizamos y automatizamos la operación de seguridad con IA, trazabilidad y cumplimiento.',
-    images: ['https://placehold.co/1200x630.png'], // Reemplazar con la imagen OG real
+    images: ['https://placehold.co/1200x630.png'],
   },
 };
 
@@ -49,11 +43,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" className="dark" style={{colorScheme: 'dark'}} suppressHydrationWarning>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
-        fontSans.variable,
-        fontHeading.variable
+        fontSans.variable
       )}>
         {children}
         <Toaster />
