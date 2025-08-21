@@ -9,7 +9,6 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#inicio", label: "Inicio", id: "inicio" },
   { href: "#solucion", label: "Solución", id: "solucion" },
   { href: "/perfiles", label: "Perfiles", id: "perfiles" },
   { href: "#contacto", label: "Contacto", id: "contacto" },
@@ -55,7 +54,6 @@ export function Header() {
   const [activeSection, setActiveSection] = React.useState('inicio');
   const [isSheetOpen, setIsSheetOpen] = React.useState(false);
 
-
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
@@ -84,7 +82,8 @@ export function Header() {
   React.useEffect(() => {
     const handleScrollAndLoad = () => {
         if (pathname !== '/') {
-          setActiveSection('');
+          const pathId = pathname.replace('/', '');
+          setActiveSection(pathId);
           return;
         };
 
@@ -118,7 +117,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScrollAndLoad);
   }, [pathname]);
 
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
@@ -134,12 +132,14 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <nav className="grid gap-6 text-lg font-medium mt-8">
-                <Logo />
+                <div className="mb-4">
+                  <Logo />
+                </div>
                  <NavMenu isMobile={true} activeSection={activeSection} onLinkClick={handleLinkClick} />
               </nav>
             </SheetContent>
           </Sheet>
-          <Button asChild className="hidden md:flex">
+          <Button asChild>
             <Link href="/login">Iniciar Sesión</Link>
           </Button>
         </div>

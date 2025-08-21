@@ -1,21 +1,21 @@
-import { AreaChart, GanttChart, Blocks } from "lucide-react";
+import { AreaChart, GanttChart, Blocks, BadgePercent } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 
 const features = [
   {
+    icon: <BadgePercent className="h-10 w-10 text-primary" />,
+    title: "-40% en costos operativos",
+    description: "Optimiza la asignación de recursos y reduce gastos innecesarios con planificación inteligente.",
+  },
+  {
     icon: <GanttChart className="h-10 w-10 text-primary" />,
-    title: "Digitaliza tu seguridad",
-    description: "Optimiza la gestión de turnos, programación de guardias y generación de reportes de forma 100% digital.",
+    title: "+80% en trazabilidad",
+    description: "Visibilidad completa de cada evento, novedad y ronda para una auditoría impecable.",
   },
   {
     icon: <Blocks className="h-10 w-10 text-primary" />,
-    title: "Todo en un solo lugar",
-    description: "Integra operaciones, recursos humanos y clientes en una plataforma web accesible desde cualquier dispositivo.",
-  },
-  {
-    icon: <AreaChart className="h-10 w-10 text-primary" />,
-    title: "Decisiones basadas en datos",
-    description: "Obtén métricas y analítica de desempeño en tiempo real para un control total y una toma de decisiones informada.",
+    title: "100% registros auditables",
+    description: "Cumplimiento normativo garantizado con data inmutable y reportes listos para la Supervigilancia.",
   },
 ];
 
@@ -25,11 +25,14 @@ export function ValueProposition() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
+             <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary font-medium">
+              Propuesta de Valor
+            </div>
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Una nueva era para la seguridad privada
             </h2>
             <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-             Nuestra plataforma centraliza y automatiza la gestión de la seguridad, garantizando el cumplimiento del Decreto 356 y optimizando cada aspecto de tus operaciones.
+             Nuestra plataforma centraliza y automatiza la gestión de la seguridad, garantizando el cumplimiento normativo y optimizando cada aspecto de tus operaciones.
             </p>
           </div>
         </div>

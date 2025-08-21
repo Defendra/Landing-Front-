@@ -12,6 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Header } from "@/components/landing/header";
 import { Footer } from "@/components/landing/footer";
+import { Shield } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -41,7 +42,7 @@ export default function AdminLoginPage() {
       await new Promise(resolve => setTimeout(resolve, 600));
       // En una implementación real, aquí iría la lógica de autenticación
       // y redirección al dashboard.
-      router.push("/admin/dashboard");
+      router.push("/"); // TODO: Redirect to admin dashboard
 
     } catch (e: any) {
       setError(e?.message ?? "No se pudo iniciar sesión. Inténtalo de nuevo.");
@@ -55,9 +56,12 @@ export default function AdminLoginPage() {
       <Header />
       <main className="flex-1 flex items-center justify-center py-12 px-4">
         <div className="w-full max-w-md">
-          <Card>
+          <Card className="shadow-2xl">
             <CardHeader className="text-center">
-               <p className="text-sm text-muted-foreground">Defendra • Administrador</p>
+              <div className="flex justify-center items-center gap-2 mb-2">
+                <Shield className="h-6 w-6 text-primary" />
+                <span className="text-sm text-muted-foreground">Defendra • Administrador</span>
+              </div>
               <CardTitle className="font-headline text-2xl">Iniciar sesión</CardTitle>
               <CardDescription>
                 Tu empresa es la encargada del registro y te suministra las credenciales.
@@ -88,7 +92,7 @@ export default function AdminLoginPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
                       <Label htmlFor="password">Contraseña</Label>
-                      <Link href="/admin/recuperar" className="text-sm text-primary hover:underline">
+                      <Link href="#" className="text-sm text-primary hover:underline">
                         ¿Olvidaste tu contraseña?
                       </Link>
                     </div>
@@ -124,7 +128,7 @@ export default function AdminLoginPage() {
                       onCheckedChange={(checked) => setRemember(Boolean(checked))}
                       disabled={loading}
                     />
-                    <Label htmlFor="remember" className="font-normal">
+                    <Label htmlFor="remember" className="font-normal text-sm">
                       Mantener mi sesión iniciada
                     </Label>
                   </div>
@@ -140,7 +144,7 @@ export default function AdminLoginPage() {
                   <span className="w-full border-t" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">o</span>
+                  <span className="bg-card px-2 text-muted-foreground">o</span>
                 </div>
               </div>
 

@@ -28,12 +28,10 @@ export function Hero() {
             </div>
 
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/tight">
-               Tecnología para una <span className="text-primary">seguridad privada</span> más eficiente en Colombia
+               La nueva era de la <span className="text-primary">seguridad privada</span> en Colombia
             </h1>
             <p className="max-w-[600px] text-foreground/80 md:text-xl">
-              Digitalizamos la operación de vigilancia con <strong>programación asistida por IA</strong>, 
-              <strong> minutas en tiempo real</strong> y <strong>control centralizado</strong>. 
-              Más trazabilidad, mejor servicio, menos fricción.
+              Digitalizamos y automatizamos la operación con IA, trazabilidad y cumplimiento.
             </p>
              <div className="flex flex-col sm:flex-row gap-2">
                 <Button asChild size="lg">

@@ -6,17 +6,41 @@ import { cn } from '@/lib/utils';
 
 const fontSans = Inter({
   subsets: ['latin'],
+  display: 'swap',
   variable: '--font-sans',
 })
 
 const fontHeading = Space_Grotesk({
   subsets: ['latin'],
+  display: 'swap',
   variable: '--font-heading',
 })
 
 export const metadata: Metadata = {
-  title: 'Defendra | Seguridad Privada del Futuro',
-  description: 'Gestión inteligente de guardias y operaciones en tiempo real. Transformamos la seguridad privada con tecnología.',
+  title: 'Defendra | La Nueva Era de la Seguridad Privada en Colombia',
+  description: 'Digitalizamos y automatizamos la operación de seguridad con IA, trazabilidad y cumplimiento. Gestión inteligente de guardias, turnos y operaciones en tiempo real.',
+  openGraph: {
+    title: 'Defendra | La Nueva Era de la Seguridad Privada en Colombia',
+    description: 'Digitalizamos y automatizamos la operación de seguridad con IA, trazabilidad y cumplimiento.',
+    url: 'https://defendra.co',
+    siteName: 'Defendra',
+    images: [
+      {
+        url: 'https://placehold.co/1200x630.png', // Reemplazar con la imagen OG real
+        width: 1200,
+        height: 630,
+        alt: 'Dashboard de Defendra mostrando KPIs de seguridad'
+      },
+    ],
+    locale: 'es_CO',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Defendra | La Nueva Era de la Seguridad Privada en Colombia',
+    description: 'Digitalizamos y automatizamos la operación de seguridad con IA, trazabilidad y cumplimiento.',
+    images: ['https://placehold.co/1200x630.png'], // Reemplazar con la imagen OG real
+  },
 };
 
 export default function RootLayout({

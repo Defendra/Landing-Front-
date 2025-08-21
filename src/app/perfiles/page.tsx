@@ -1,9 +1,9 @@
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Footer } from "@/components/landing/footer";
 import { Header } from "@/components/landing/header";
-import { CalendarDays, FileText, BookOpenCheck, MessageSquare, Bot, GanttChartSquare, Users, BarChart } from "lucide-react";
+import { CalendarDays, FileText, BookOpenCheck, MessageSquare, Bot, GanttChartSquare, Users, BarChart, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -59,9 +59,9 @@ export default function ProfilesOverviewPage() {
     <div className="flex min-h-screen w-full flex-col bg-background">
       <Header />
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
             <div className="container px-4 md:px-6">
-                <div className="text-center mb-10">
+                <div className="text-center mb-12">
                     <h1 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                         Una herramienta para cada rol
                     </h1>
@@ -72,8 +72,8 @@ export default function ProfilesOverviewPage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                     {/* Guardia Card */}
-                    <Card className="h-full flex flex-col">
-                        <CardContent className="p-6 flex-grow flex flex-col">
+                    <Card className="h-full flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                        <CardHeader>
                              <Image
                                 src="https://placehold.co/600x400.png"
                                 width={600}
@@ -82,11 +82,12 @@ export default function ProfilesOverviewPage() {
                                 className="aspect-video w-full overflow-hidden rounded-lg object-cover mb-4"
                                 data-ai-hint="security guard mobile app"
                             />
-                            <h3 className="font-headline text-2xl font-bold text-center">Para el Guardia</h3>
-                            <p className="text-muted-foreground text-center mb-6">
+                            <CardTitle className="font-headline text-2xl font-bold text-center">Para el Guardia</CardTitle>
+                            <CardDescription className="text-center">
                                 Accede a horarios, consulta turnos, reporta minutas y novedades. Todo desde tu móvil.
-                            </p>
-                            
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6 flex-grow flex flex-col">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                 {guardFeatures.map((feature) => (
                                     <div key={feature.title} className="border rounded-lg p-4 flex flex-col items-start text-left h-full">
@@ -106,8 +107,8 @@ export default function ProfilesOverviewPage() {
                     </Card>
 
                     {/* Administrador Card */}
-                    <Card className="h-full flex flex-col">
-                        <CardContent className="p-6 flex-grow flex flex-col">
+                    <Card className="h-full flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                         <CardHeader>
                              <Image
                                 src="https://placehold.co/600x400.png"
                                 width={600}
@@ -116,11 +117,12 @@ export default function ProfilesOverviewPage() {
                                 className="aspect-video w-full overflow-hidden rounded-lg object-cover mb-4"
                                 data-ai-hint="admin dashboard analytics"
                             />
-                            <h3 className="font-headline text-2xl font-bold text-center">Para el Administrador</h3>
-                            <p className="text-muted-foreground text-center mb-6">
+                            <CardTitle className="font-headline text-2xl font-bold text-center">Para el Administrador</CardTitle>
+                            <CardDescription className="text-center">
                                 Configura operaciones, programa personal, gestiona novedades y visualiza KPIs en tiempo real.
-                            </p>
-                            
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6 flex-grow flex flex-col">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                 {adminFeatures.map((feature) => (
                                     <div key={feature.title} className="border rounded-lg p-4 flex flex-col items-start text-left h-full">
@@ -133,7 +135,7 @@ export default function ProfilesOverviewPage() {
 
                             <div className="text-sm text-muted-foreground text-center mt-auto pt-4">
                                 El acceso de Administrador lo gestiona tu empresa.{" "}
-                                <Link href="/login" className="underline font-medium">Más información</Link>
+                                <Link href="/login" className="underline font-medium text-primary">Más información</Link>
                             </div>
                         </CardContent>
                     </Card>
