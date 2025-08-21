@@ -3,7 +3,7 @@ import { Footer } from "@/components/landing/footer";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Briefcase, Users, FileText, Archive, Bell, Banknote, Settings, LayoutDashboard, Wand2, Forward, FileSpreadsheet, CalendarStats, ClipboardCheck, BuildingWarehouse, BarChart } from "lucide-react";
+import { Briefcase, Users, FileText, Archive, Bell, Banknote, Settings, LayoutDashboard, Wand2, Forward, FileSpreadsheet, CalendarDays, ClipboardCheck, Building, BarChart } from "lucide-react";
 
 const quickActions = [
     {
@@ -42,7 +42,7 @@ const modules = [
 
 const adminFeatures = [
     {
-        icon: <CalendarStats className="h-9 w-9 text-primary" />,
+        icon: <CalendarDays className="h-9 w-9 text-primary" />,
         title: "Programación y Cobertura",
         description: "Planifica por puesto o por persona, visualiza coberturas y detecta vacíos con anticipación.",
     },
@@ -52,7 +52,7 @@ const adminFeatures = [
         description: "Centraliza vacaciones, incapacidades y permisos. Aprobación ágil y trazabilidad completa.",
     },
     {
-        icon: <BuildingWarehouse className="h-9 w-9 text-primary" />,
+        icon: <Building className="h-9 w-9 text-primary" />,
         title: "Clientes y Contratos",
         description: "Archivo comercial, sedes y puestos. Relaciona cada servicio con su ficha técnica y condiciones.",
     },
