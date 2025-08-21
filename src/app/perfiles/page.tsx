@@ -1,55 +1,28 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Footer } from "@/components/landing/footer";
 import { Header } from "@/components/landing/header";
-import { CalendarDays, FileText, BookOpenCheck, MessageSquare, Bot, GanttChartSquare, Users, BarChart } from "lucide-react";
+import { CalendarDays, FileText, BookOpenCheck, MessageSquare, Bot, GanttChartSquare, Users, BarChart, ShieldCheck, MapPin, Building, Clock, BookUser } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const guardFeatures = [
-    {
-        icon: <CalendarDays className="h-8 w-8 text-primary" />,
-        title: "Horarios y Turnos",
-        description: "Consulta turnos actualizados y recibe notificaciones por cambios.",
-    },
-    {
-        icon: <FileText className="h-8 w-8 text-primary" />,
-        title: "Reporte de Novedades",
-        description: "Incapacidades, vacaciones o permisos llegan directo a operaciones.",
-    },
-    {
-        icon: <BookOpenCheck className="h-8 w-8 text-primary" />,
-        title: "Minuta Digital",
-        description: "Registra eventos e incidentes con evidencia en tiempo real.",
-    },
-    {
-        icon: <MessageSquare className="h-8 w-8 text-primary" />,
-        title: "Comunicación Directa",
-        description: "Chat seguro con supervisores y alertas en emergencias.",
-    },
+    { icon: <GanttChartSquare className="h-8 w-8 text-primary" />, title: "Horarios y Turnos", description: "Consulta próximos turnos, recibe notificaciones y entra al puesto con un tap." },
+    { icon: <ShieldCheck className="h-8 w-8 text-primary" />, title: "Check-in Biométrico", description: "Selfie + GPS para validar asistencia en segundos, sin fricciones." },
+    { icon: <FileText className="h-8 w-8 text-primary" />, title: "Minuta Digital", description: "Registra eventos con fotos, videos o audio. Envío en tiempo real." },
+    { icon: <Clock className="h-8 w-8 text-primary" />, title: "Novedades y Solicitudes", description: "Vacaciones, incapacidades y permisos con seguimiento del estado de aprobación." },
+    { icon: <MessageSquare className="h-8 w-8 text-primary" />, title: "Comunicación Directa", description: "Chat seguro con supervisores y alertas de emergencia para una respuesta rápida." },
+    { icon: <BookUser className="h-8 w-8 text-primary" />, title: "Perfil y Documentos", description: "Tus licencias y cursos siempre a la mano con recordatorios de vencimiento." },
 ];
 
 const adminFeatures = [
-    {
-        icon: <GanttChartSquare className="h-8 w-8 text-primary" />,
-        title: "Programación y Cobertura (IA)",
-        description: "Planifica por puesto/persona con sugerencias asistidas por IA para coberturas y relevos.",
-    },
-    {
-        icon: <Bot className="h-8 w-8 text-primary" />,
-        title: "Ficha Técnica con IA/OCR",
-        description: "Extracción desde PDF/imágenes para consignas, checklist, riesgos y protocolos.",
-    },
-    {
-        icon: <Users className="h-8 w-8 text-primary" />,
-        title: "Novedades del Personal",
-        description: "Vacaciones/incapacidades centralizadas con trazabilidad y reglas de reemplazo.",
-    },
-    {
-        icon: <BarChart className="h-8 w-8 text-primary" />,
-        title: "Reportes y KPIs",
-        description: "Cobertura, incidentes y desempeño. Exportación de datos marca blanca.",
-    },
+    { icon: <Bot className="h-8 w-8 text-primary" />, title: "Ficha Técnica con IA/OCR", description: "Carga un PDF y extrae automáticamente los puestos, rondas y condiciones del servicio." },
+    { icon: <GanttChartSquare className="h-8 w-8 text-primary" />, title: "Programación y Cobertura", description: "Parrilla de turnos por puestos o personas, con detección de vacíos y sugerencias de IA." },
+    { icon: <Users className="h-8 w-8 text-primary" />, title: "Novedades de Personal", description: "Aprobación centralizada que impacta automáticamente la programación y pre-nómina." },
+    { icon: <MapPin className="h-8 w-8 text-primary" />, title: "Inventario Crítico", description: "Asigna y controla armas, radios y chalecos con alertas por vencimiento de permisos." },
+    { icon: <Building className="h-8 w-8 text-primary" />, title: "Clientes y Puestos", description: "Centraliza el archivo comercial, sedes y condiciones específicas de cada cliente." },
+    { icon: <BarChart className="h-8 w-8 text-primary" />, title: "Dashboard de KPIs", description: "Visualiza en tiempo real la cobertura, incidentes y desempeño general de la operación." },
 ];
 
 
@@ -79,11 +52,11 @@ export default function ProfilesOverviewPage() {
                                 height={400}
                                 alt="Funciones para el Guardia"
                                 className="aspect-video w-full overflow-hidden rounded-lg object-cover mb-4"
-                                data-ai-hint="security guard mobile app"
+                                data-ai-hint="security guard using mobile app"
                             />
                             <CardTitle className="font-headline text-2xl font-bold text-center">Para el Guardia</CardTitle>
                             <CardDescription className="text-center text-muted-foreground">
-                                Accede a horarios, consulta turnos, reporta minutas y novedades. Todo desde tu móvil.
+                                Accede a tus horarios, realiza check-in biométrico, registra minutas con evidencia y gestiona tus novedades. Todo desde tu móvil.
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="p-6 flex-grow flex flex-col">
@@ -113,12 +86,11 @@ export default function ProfilesOverviewPage() {
                                 width={600}
                                 height={400}
                                 alt="Funciones para el Administrador"
-                                className="aspect-video w-full overflow-hidden rounded-lg object-cover mb-4"
-                                data-ai-hint="admin dashboard analytics"
+                                data-ai-hint="admin dashboard analytics security"
                             />
                             <CardTitle className="font-headline text-2xl font-bold text-center">Para el Administrador</CardTitle>
                             <CardDescription className="text-center text-muted-foreground">
-                                Configura operaciones, programa personal, gestiona novedades y visualiza KPIs en tiempo real.
+                                Configura planes desde Ficha Técnica con IA, aprueba novedades y controla KPIs.
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="p-6 flex-grow flex flex-col">
