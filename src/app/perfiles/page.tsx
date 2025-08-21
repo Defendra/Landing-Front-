@@ -9,6 +9,7 @@ import { Bot, GanttChartSquare, Users, BarChart, ShieldCheck, MapPin, Building, 
 import Link from "next/link";
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart as RechartsBarChart, XAxis, YAxis, Tooltip, Legend, Bar, CartesianGrid } from 'recharts';
 import { Tooltip as ShadTooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { cn } from "@/lib/utils";
 
 
 const guardFeatures = [
