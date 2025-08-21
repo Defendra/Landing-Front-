@@ -50,16 +50,16 @@ export function Contact() {
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Hablemos
             </h2>
-            <p className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               ¿Listo para transformar la seguridad de tu empresa? Contáctanos para una demostración personalizada y descubre todo lo que Defendra puede hacer por ti.
             </p>
-             <div className="space-y-2 text-foreground/90">
+             <div className="space-y-2 text-foreground">
                 <p><strong>Email:</strong> contacto@defendra.co</p>
                 <p><strong>Teléfono:</strong> +57 300 123 4567</p>
                 <p><strong>Ubicación:</strong> Bogotá, Colombia</p>
             </div>
           </div>
-          <Card className="w-full max-w-lg mx-auto shadow-lg">
+          <Card className="w-full max-w-lg mx-auto shadow-lg bg-card border-border/50">
             <CardHeader>
               <CardTitle>Solicita una Demo</CardTitle>
               <CardDescription>Completa el formulario y un especialista te contactará.</CardDescription>
@@ -95,7 +95,7 @@ export function Contact() {
                       <FormMessage />
                     </FormItem>
                   )} />
-                  <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+                  <Button type="submit" className="w-full bg-accent hover:bg-destructive text-accent-foreground" disabled={form.formState.isSubmitting}>
                     {form.formState.isSubmitting ? 'Enviando...' : 'Enviar Solicitud'}
                   </Button>
                 </form>

@@ -36,7 +36,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonios" className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
+    <section id="testimonios" className="w-full py-12 md:py-24 lg:py-32 bg-background border-b">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-3">
@@ -46,7 +46,7 @@ export function Testimonials() {
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Empresas que confían en Defendra
             </h2>
-            <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Nuestros clientes han transformado su operación y mejorado su eficiencia, sentando un nuevo estándar en la seguridad privada.
             </p>
           </div>
@@ -63,7 +63,7 @@ export function Testimonials() {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="md:basis-1/2">
                   <div className="p-4">
-                    <Card className="bg-background">
+                    <Card className="bg-card">
                       <CardContent className="flex flex-col items-start p-6 text-left">
                         <p className="text-lg font-medium mb-4">"{testimonial.quote}"</p>
                         <div className="flex items-center gap-4">

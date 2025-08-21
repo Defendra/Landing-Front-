@@ -52,18 +52,18 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-secondary/50">
+    <div className="flex min-h-screen w-full flex-col bg-card">
       <Header />
       <main className="flex-1 flex items-center justify-center py-12 px-4">
         <div className="w-full max-w-md">
-          <Card className="shadow-2xl">
+          <Card className="shadow-2xl bg-background">
             <CardHeader className="text-center">
               <div className="flex justify-center items-center gap-2 mb-2">
                 <Shield className="h-6 w-6 text-primary" />
                 <span className="text-sm text-muted-foreground">Defendra • Administrador</span>
               </div>
               <CardTitle className="font-headline text-2xl">Iniciar sesión</CardTitle>
-              <CardDescription>
+              <CardDescription className="text-muted-foreground">
                 Tu empresa es la encargada del registro y te suministra las credenciales.
               </CardDescription>
             </CardHeader>
@@ -144,7 +144,7 @@ export default function AdminLoginPage() {
                   <span className="w-full border-t" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-muted-foreground">o</span>
+                  <span className="bg-background px-2 text-muted-foreground">o</span>
                 </div>
               </div>
 

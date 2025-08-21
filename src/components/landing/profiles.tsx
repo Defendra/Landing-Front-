@@ -1,11 +1,10 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
 export function Profiles() {
   return (
-    <section id="perfiles-teaser" className="w-full py-12 md:py-24 lg:py-32 bg-background">
+    <section id="perfiles-teaser" className="w-full py-12 md:py-24 lg:py-32 bg-card">
       <div className="container px-4 md:px-6 text-center">
         <div className="flex flex-col items-center justify-center space-y-4">
           <div className="space-y-3">
@@ -15,7 +14,7 @@ export function Profiles() {
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Una herramienta para cada rol
             </h2>
-            <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Empoderamos tanto al personal en campo como a los administradores en la oficina, conectando cada punto de la operación de seguridad.
             </p>
           </div>
@@ -31,7 +30,7 @@ export function Profiles() {
               />
         </div>
         <div className="mt-8">
-            <Button asChild size="lg">
+            <Button asChild size="lg" variant="outline">
                 <Link href="/perfiles">Comparar Perfiles</Link>
             </Button>
         </div>

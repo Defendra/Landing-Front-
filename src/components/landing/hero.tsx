@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const kpis = [
   { value: "98%", label: "Cobertura", position: "top-1/4 left-[8%]", delay: "0s" },
   { value: "1,284", label: "Turnos hoy", position: "bottom-1/4 right-[10%]", delay: "0.15s" },
-  { value: "3", label: "Alertas", position: "top-[18%] right-[18%]", textClass: "text-amber-500", delay: "0.3s" },
+  { value: "3", label: "Alertas", position: "top-[18%] right-[18%]", textClass: "text-accent", delay: "0.3s" },
 ];
 
 export function Hero() {
@@ -17,20 +17,23 @@ export function Hero() {
           
           <div className="flex flex-col justify-center space-y-4">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/tight">
-               Digitalizamos y transformamos la <span className="text-primary">seguridad privada</span> en Colombia
+               La nueva era de la <span className="text-primary">seguridad privada</span> en Colombia
             </h1>
-            <p className="max-w-[600px] text-foreground/80 md:text-xl">
-              Plataforma todo-en-uno para la gestión de operaciones, personal y cumplimiento normativo. Aumenta la eficiencia, reduce los riesgos y ofrece un servicio superior.
+            <p className="max-w-[600px] text-muted-foreground md:text-xl">
+              Digitalizamos y automatizamos la operación de vigilancia con IA, trazabilidad y cumplimiento.
             </p>
              <div className="flex flex-col sm:flex-row gap-2">
-                <Button asChild size="lg">
-                    <a href="#solucion">Conoce nuestra plataforma</a>
+                <Button asChild size="lg" className="bg-accent hover:bg-destructive text-accent-foreground">
+                    <Link href="#solucion">Conoce la solución</Link>
+                </Button>
+                 <Button asChild size="lg" variant="outline">
+                    <Link href="/perfiles">Ver Perfiles</Link>
                 </Button>
             </div>
           </div>
 
           <div>
-            <div className="group relative aspect-video rounded-xl shadow-md overflow-hidden">
+            <div className="group relative aspect-video rounded-xl shadow-2xl overflow-hidden">
                 <Image
                     src="https://placehold.co/600x400.png"
                     alt="Dashboard de Defendra con KPIs de cobertura y programación"
@@ -45,7 +48,7 @@ export function Hero() {
                         key={kpi.label}
                         style={{ animation: `floatIn 0.7s ease-out both`, animationDelay: kpi.delay }}
                         className={cn(
-                            "absolute backdrop-blur-md bg-white/80 dark:bg-black/70 border rounded-lg p-2 animate-in",
+                            "absolute backdrop-blur-md bg-background/70 border rounded-lg p-2 animate-in",
                             kpi.position
                         )}
                     >

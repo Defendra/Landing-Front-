@@ -31,11 +31,11 @@ export default function GuardOnboardingPage() {
   const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 0));
 
   return (
-    <div className="min-h-screen bg-secondary/50 flex flex-col items-center justify-center p-4">
-      <Card className="w-full max-w-4xl">
+    <div className="min-h-screen bg-card flex flex-col items-center justify-center p-4">
+      <Card className="w-full max-w-4xl bg-background">
         <CardHeader className="text-center">
           <CardTitle className="font-headline text-3xl">Registro de Guardia</CardTitle>
-          <CardDescription>Crea tu perfil en pocos pasos y empieza a trabajar con nosotros.</CardDescription>
+          <CardDescription className="text-muted-foreground">Crea tu perfil en pocos pasos y empieza a trabajar con nosotros.</CardDescription>
         </CardHeader>
         <CardContent>
           {currentStep < steps.length ? (
@@ -61,7 +61,7 @@ export default function GuardOnboardingPage() {
 
               <div className="mt-8 flex justify-between">
                 <Button variant="outline" onClick={prevStep} disabled={currentStep === 0}>Anterior</Button>
-                <Button onClick={nextStep}>
+                <Button onClick={nextStep} className="bg-accent hover:bg-destructive text-accent-foreground">
                   {currentStep === steps.length - 1 ? "Finalizar Registro" : "Siguiente"}
                 </Button>
               </div>
@@ -276,7 +276,7 @@ const Step8 = () => (
     <div>
         <h3 className="font-semibold text-lg mb-4">Revisión y Consentimiento</h3>
         <p className="text-muted-foreground mb-4">Por favor, revisa que toda tu información sea correcta antes de finalizar.</p>
-        <div className="max-h-60 overflow-y-auto border rounded-md p-4 bg-secondary/50 space-y-2">
+        <div className="max-h-60 overflow-y-auto border rounded-md p-4 bg-card space-y-2">
             <p><strong>Nombres:</strong> John Doe</p>
             <p><strong>Documento:</strong> CC 123456789</p>
             <p><strong>Email:</strong> john.doe@email.com</p>

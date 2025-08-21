@@ -19,7 +19,7 @@ function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2" prefetch={false}>
       <Shield className="h-7 w-7 text-primary" />
-      <span className="font-headline text-2xl font-bold text-gray-900 dark:text-gray-50">Defendra</span>
+      <span className="font-headline text-2xl font-bold text-foreground">Defendra</span>
     </Link>
   );
 }
@@ -38,8 +38,8 @@ function NavMenu({ isMobile = false, activeSection, onLinkClick }: { isMobile?: 
           href={link.href}
           onClick={(e) => onLinkClick(e, link.href)}
           className={cn(
-            "transition-colors hover:text-foreground cursor-pointer",
-            activeSection === link.id ? "text-foreground font-semibold" : "text-foreground/80"
+            "transition-colors hover:text-primary cursor-pointer",
+            activeSection === link.id ? "text-primary font-semibold" : "text-muted-foreground"
           )}
         >
           {link.label}
@@ -140,8 +140,8 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
-          <Button asChild>
-            <Link href="/login">Solicita una demo</Link>
+          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Link href="/login">Iniciar Sesión</Link>
           </Button>
         </div>
       </div>

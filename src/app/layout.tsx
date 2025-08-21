@@ -1,13 +1,21 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import { Inter } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
 import { cn } from '@/lib/utils';
 
 const fontSans = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
+  weight: ['400', '500', '700']
+})
+
+const fontHeadline = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-headline',
+  weight: ['300', '400', '700']
 })
 
 export const metadata: Metadata = {
@@ -46,7 +54,8 @@ export default function RootLayout({
     <html lang="es" className="dark" style={{colorScheme: 'dark'}} suppressHydrationWarning>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
-        fontSans.variable
+        fontSans.variable,
+        fontHeadline.variable
       )}>
         {children}
         <Toaster />

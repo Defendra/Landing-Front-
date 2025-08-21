@@ -24,24 +24,24 @@ section[id] {
 
 @layer base {
   :root {
-    --background: 224 71% 4%; /* #0D0C2F */
+    --background: 243 53% 12%; /* #0D0C2F */
     --foreground: 210 20% 98%; /* #F8FAFB */
-    --card: 224 71% 9%;
+    --card: 243 53% 16%; /* A slightly lighter shade for cards */
     --card-foreground: 210 20% 98%;
-    --popover: 224 71% 9%;
+    --popover: 243 53% 12%;
     --popover-foreground: 210 20% 98%;
     --primary: 217 100% 50%; /* #0062FE */
     --primary-foreground: 210 20% 98%;
     --secondary: 251 98% 43%; /* #2D01D8 */
     --secondary-foreground: 210 20% 98%;
-    --muted: 225 21% 15%; /* #1F2937 */
-    --muted-foreground: 210 16% 65%; /* #A9B8C4 */
+    --muted: 225 21% 26%; /* #343E4F, adjusted from #425266 */
+    --muted-foreground: 217 14% 70%; /* #A9B8C4 */
     --accent: 23 99% 50%; /* #FE7202 */
     --accent-foreground: 210 20% 98%;
     --destructive: 18 97% 47%; /* #ED4E00 */
     --destructive-foreground: 210 20% 98%;
-    --border: 225 21% 20%; /* #2A3444 */
-    --input: 225 21% 20%;
+    --border: 217 14% 40%; /* A shade between muted and background */
+    --input: 217 14% 40%;
     --ring: 217 100% 50%;
     --radius: 1rem;
     --chart-1: 221 83% 53%;
@@ -52,24 +52,24 @@ section[id] {
   }
 
   .dark {
-    --background: 224 71% 4%; /* #0D0C2F */
+    --background: 243 53% 12%; /* #0D0C2F */
     --foreground: 210 20% 98%; /* #F8FAFB */
-    --card: 224 71% 9%;
+    --card: 243 53% 16%;
     --card-foreground: 210 20% 98%;
-    --popover: 224 71% 9%;
+    --popover: 243 53% 12%;
     --popover-foreground: 210 20% 98%;
     --primary: 217 100% 50%; /* #0062FE */
     --primary-foreground: 210 20% 98%;
     --secondary: 251 98% 43%; /* #2D01D8 */
     --secondary-foreground: 210 20% 98%;
-    --muted: 225 21% 15%; /* #1F2937 */
-    --muted-foreground: 210 16% 65%; /* #A9B8C4 */
+    --muted: 225 21% 26%; /* #343E4F */
+    --muted-foreground: 217 14% 70%; /* #A9B8C4 */
     --accent: 23 99% 50%; /* #FE7202 */
     --accent-foreground: 210 20% 98%;
     --destructive: 18 97% 47%; /* #ED4E00 */
     --destructive-foreground: 210 20% 98%;
-    --border: 225 21% 20%; /* #2A3444 */
-    --input: 225 21% 20%;
+    --border: 217 14% 40%;
+    --input: 217 14% 40%;
     --ring: 217 100% 50%;
   }
 }
@@ -81,4 +81,15 @@ section[id] {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom font styles to emulate Univia Pro */
+.font-headline {
+  font-family: 'Poppins', sans-serif; /* Using Poppins as a close web-safe alternative */
+  font-weight: 300; /* Light weight for headlines */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; /* Medium weight for body */
 }
