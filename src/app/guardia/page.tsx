@@ -67,7 +67,7 @@ export default function GuardiaPage() {
                 <section className="w-full pb-12 md:pb-24 lg:pb-32 text-center">
                     <div className="container">
                         <Button asChild size="lg">
-                            <Link href="#">Iniciar Registro</Link>
+                            <Link href="/guardia/onboarding">Iniciar Registro</Link>
                         </Button>
                     </div>
                 </section>
