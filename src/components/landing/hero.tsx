@@ -9,48 +9,27 @@ const kpis = [
   { value: "3", label: "Alertas", position: "top-[18%] right-[18%]", textClass: "text-amber-500", delay: "0.3s" },
 ];
 
-const trustChips = [
-    { label: "🔒 Seguridad & auditoría" },
-    { label: "🤖 IA / OCR para Ficha Técnica" },
-    { label: "🌐 100% Web • Mobile‑First" },
-]
-
 export function Hero() {
   return (
     <section id="inicio" className="w-full hero-gradient pt-12 md:pt-24 lg:pt-32 border-b">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center">
           
-          <div className="flex flex-col justify-center space-y-4 order-2 lg:order-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-secondary shadow-sm mb-3 w-fit">
-                <span className="text-green-600 dark:text-green-400">●</span>
-                <small className="text-muted-foreground">Hecho para empresas de seguridad en Colombia</small>
-            </div>
-
+          <div className="flex flex-col justify-center space-y-4">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/tight">
-               La nueva era de la <span className="text-primary">seguridad privada</span> en Colombia
+               Digitalizamos y transformamos la <span className="text-primary">seguridad privada</span> en Colombia
             </h1>
             <p className="max-w-[600px] text-foreground/80 md:text-xl">
-              Digitalizamos y automatizamos la operación con IA, trazabilidad y cumplimiento.
+              Plataforma todo-en-uno para la gestión de operaciones, personal y cumplimiento normativo. Aumenta la eficiencia, reduce los riesgos y ofrece un servicio superior.
             </p>
              <div className="flex flex-col sm:flex-row gap-2">
                 <Button asChild size="lg">
-                    <a href="#solucion">Conoce la solución</a>
+                    <a href="#solucion">Conoce nuestra plataforma</a>
                 </Button>
-                 <Button asChild size="lg" variant="outline">
-                    <Link href="/perfiles">Ver Perfiles</Link>
-                </Button>
-            </div>
-            <div className="flex flex-wrap gap-3 pt-4 text-muted-foreground">
-                {trustChips.map(chip => (
-                    <div key={chip.label} className="text-sm border bg-white/80 dark:bg-secondary/80 rounded-full px-3 py-1.5 shadow-sm">
-                        {chip.label}
-                    </div>
-                ))}
             </div>
           </div>
 
-          <div className="order-1 lg:order-2">
+          <div>
             <div className="group relative aspect-video rounded-xl shadow-md overflow-hidden">
                 <Image
                     src="https://placehold.co/600x400.png"

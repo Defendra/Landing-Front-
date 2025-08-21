@@ -2,9 +2,9 @@ import { Header } from '@/components/landing/header';
 import { Hero } from '@/components/landing/hero';
 import { ValueProposition } from '@/components/landing/value-proposition';
 import { Profiles } from '@/components/landing/profiles';
-import { Testimonials } from '@/components/landing/testimonials';
 import { Footer } from '@/components/landing/footer';
 import { Contact } from '@/components/landing/contact';
+import { Testimonials } from '@/components/landing/testimonials';
 
 export default function Home() {
   return (

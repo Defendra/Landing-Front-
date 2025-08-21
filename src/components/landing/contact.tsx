@@ -43,7 +43,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contacto" className="w-full py-12 md:py-24 lg:py-32">
+    <section id="contacto" className="w-full py-12 md:py-24 lg:py-32 border-t">
       <div className="container px-4 md:px-6">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
           <div className="space-y-4">
@@ -53,8 +53,13 @@ export function Contact() {
             <p className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               ¿Listo para transformar la seguridad de tu empresa? Contáctanos para una demostración personalizada y descubre todo lo que Defendra puede hacer por ti.
             </p>
+             <div className="space-y-2 text-foreground/90">
+                <p><strong>Email:</strong> contacto@defendra.co</p>
+                <p><strong>Teléfono:</strong> +57 300 123 4567</p>
+                <p><strong>Ubicación:</strong> Bogotá, Colombia</p>
+            </div>
           </div>
-          <Card className="w-full max-w-lg mx-auto">
+          <Card className="w-full max-w-lg mx-auto shadow-lg">
             <CardHeader>
               <CardTitle>Solicita una Demo</CardTitle>
               <CardDescription>Completa el formulario y un especialista te contactará.</CardDescription>

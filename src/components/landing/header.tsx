@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { href: "#solucion", label: "Solución", id: "solucion" },
   { href: "/perfiles", label: "Perfiles", id: "perfiles" },
+  { href: "#testimonios", label: "Clientes", id: "testimonios" },
   { href: "#contacto", label: "Contacto", id: "contacto" },
 ];
 
@@ -140,7 +141,7 @@ export function Header() {
             </SheetContent>
           </Sheet>
           <Button asChild>
-            <Link href="/login">Iniciar Sesión</Link>
+            <Link href="/login">Solicita una demo</Link>
           </Button>
         </div>
       </div>
