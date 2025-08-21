@@ -140,7 +140,7 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
-          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Button asChild>
             <Link href="/login">Iniciar Sesión</Link>
           </Button>
         </div>
