@@ -1,75 +1,156 @@
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Footer } from "@/components/landing/footer";
+import { Header } from "@/components/landing/header";
+import { CalendarDays, FileText, BookOpenCheck, MessageSquare, Bot, GanttChartSquare, Users, BarChart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Header } from "@/components/landing/header";
-import { Footer } from "@/components/landing/footer";
 
-export default function ProfilesPage() {
+const guardFeatures = [
+    {
+        icon: <CalendarDays className="h-8 w-8 text-primary" />,
+        title: "Horarios y Turnos",
+        description: "Consulta turnos actualizados y recibe notificaciones por cambios.",
+    },
+    {
+        icon: <FileText className="h-8 w-8 text-primary" />,
+        title: "Reporte de Novedades",
+        description: "Incapacidades, vacaciones o permisos llegan directo a operaciones.",
+    },
+    {
+        icon: <BookOpenCheck className="h-8 w-8 text-primary" />,
+        title: "Minuta Digital",
+        description: "Registra eventos e incidentes con evidencia en tiempo real.",
+    },
+    {
+        icon: <MessageSquare className="h-8 w-8 text-primary" />,
+        title: "Comunicación Directa",
+        description: "Chat seguro con supervisores y alertas en emergencias.",
+    },
+];
+
+const adminFeatures = [
+    {
+        icon: <GanttChartSquare className="h-8 w-8 text-primary" />,
+        title: "Programación y Cobertura (IA)",
+        description: "Planifica por puesto/persona con sugerencias asistidas por IA para coberturas y relevos.",
+    },
+    {
+        icon: <Bot className="h-8 w-8 text-primary" />,
+        title: "Ficha Técnica con IA/OCR",
+        description: "Extracción desde PDF/imágenes para consignas, checklist, riesgos y protocolos.",
+    },
+    {
+        icon: <Users className="h-8 w-8 text-primary" />,
+        title: "Novedades del Personal",
+        description: "Vacaciones/incapacidades centralizadas con trazabilidad y reglas de reemplazo.",
+    },
+    {
+        icon: <BarChart className="h-8 w-8 text-primary" />,
+        title: "Reportes y KPIs",
+        description: "Cobertura, incidentes y desempeño. Exportación de datos marca blanca.",
+    },
+];
+
+
+export default function ProfilesOverviewPage() {
   return (
     <div className="flex min-h-screen w-full flex-col bg-background">
-        <Header />
-        <main className="flex-1">
-             <section className="w-full py-12 md:py-24 lg:py-32">
-                <div className="container px-4 md:px-6">
-                    <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                        <div className="space-y-2">
-                            <h1 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                            Una herramienta para cada rol
-                            </h1>
-                            <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                            Defendra potencia la eficiencia y comunicación de guardias en campo y administradores en oficina.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="mx-auto grid max-w-6xl gap-8 py-12 lg:grid-cols-2">
-                    <Card className="flex flex-col overflow-hidden">
-                        <CardContent className="flex flex-col items-center gap-6 p-8 text-center">
-                        <Image
-                            src="https://placehold.co/400x300.png"
-                            width="400"
-                            height="300"
-                            alt="Perfil Guardia"
-                            className="aspect-video w-full overflow-hidden rounded-lg object-cover"
-                            data-ai-hint="security guard mobile app"
-                        />
-                        <div className="space-y-2">
-                            <h3 className="font-headline text-2xl font-bold">Para el Guardia</h3>
-                            <p className="text-foreground/80">
-                            Accede a horarios, consulta turnos, reporta minutas y novedades. Todo desde tu móvil.
-                            </p>
-                        </div>
-                        <Button asChild variant="outline" size="lg">
-                            <Link href="/guardia">Ver funciones de Guardia</Link>
-                        </Button>
-                        </CardContent>
-                    </Card>
-                    <Card className="flex flex-col overflow-hidden">
-                        <CardContent className="flex flex-col items-center gap-6 p-8 text-center">
-                        <Image
-                            src="https://placehold.co/400x300.png"
-                            width="400"
-                            height="300"
-                            alt="Perfil Administrador"
-                            className="aspect-video w-full overflow-hidden rounded-lg object-cover"
-                            data-ai-hint="admin dashboard analytics"
-                        />
-                        <div className="space-y-2">
-                            <h3 className="font-headline text-2xl font-bold">Para el Administrador</h3>
-                            <p className="text-foreground/80">
-                            Configura operaciones, programa personal, gestiona novedades y visualiza KPIs en tiempo real.
-                            </p>
-                        </div>
-                        <Button asChild variant="outline" size="lg">
-                            <Link href="/admin">Ver funciones de Admin</Link>
-                        </Button>
-                        </CardContent>
-                    </Card>
-                    </div>
+      <Header />
+      <main className="flex-1">
+        <section className="w-full py-12 md:py-24 lg:py-32">
+            <div className="container px-4 md:px-6">
+                <div className="text-center mb-10">
+                    <h1 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                        Una herramienta para cada rol
+                    </h1>
+                    <p className="mx-auto max-w-[700px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                        Conoce de un vistazo lo que puede hacer cada perfil en Defendra.
+                    </p>
                 </div>
-            </section>
-        </main>
-        <Footer />
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    {/* Guardia Card */}
+                    <Card className="h-full flex flex-col">
+                        <CardContent className="p-6 flex-grow flex flex-col">
+                             <Image
+                                src="https://placehold.co/600x400.png"
+                                width={600}
+                                height={400}
+                                alt="Funciones para el Guardia"
+                                className="aspect-video w-full overflow-hidden rounded-lg object-cover mb-4"
+                                data-ai-hint="security guard mobile app"
+                            />
+                            <h3 className="font-headline text-2xl font-bold text-center">Para el Guardia</h3>
+                            <p className="text-muted-foreground text-center mb-6">
+                                Accede a horarios, consulta turnos, reporta minutas y novedades. Todo desde tu móvil.
+                            </p>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                                {guardFeatures.map((feature) => (
+                                    <div key={feature.title} className="border rounded-lg p-4 flex flex-col items-start text-left h-full">
+                                        {feature.icon}
+                                        <div className="font-semibold mt-2">{feature.title}</div>
+                                        <p className="text-muted-foreground text-sm">{feature.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            <div className="text-center mt-auto">
+                                <Button asChild size="lg">
+                                    <Link href="/guardia/onboarding">Iniciar registro de Guardia</Link>
+                                </Button>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    {/* Administrador Card */}
+                    <Card className="h-full flex flex-col">
+                        <CardContent className="p-6 flex-grow flex flex-col">
+                             <Image
+                                src="https://placehold.co/600x400.png"
+                                width={600}
+                                height={400}
+                                alt="Funciones para el Administrador"
+                                className="aspect-video w-full overflow-hidden rounded-lg object-cover mb-4"
+                                data-ai-hint="admin dashboard analytics"
+                            />
+                            <h3 className="font-headline text-2xl font-bold text-center">Para el Administrador</h3>
+                            <p className="text-muted-foreground text-center mb-6">
+                                Configura operaciones, programa personal, gestiona novedades y visualiza KPIs en tiempo real.
+                            </p>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                                {adminFeatures.map((feature) => (
+                                    <div key={feature.title} className="border rounded-lg p-4 flex flex-col items-start text-left h-full">
+                                        {feature.icon}
+                                        <div className="font-semibold mt-2">{feature.title}</div>
+                                        <p className="text-muted-foreground text-sm">{feature.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="text-sm text-muted-foreground text-center mt-auto pt-4">
+                                El acceso de Administrador lo gestiona tu empresa.{" "}
+                                <Link href="/login" className="underline font-medium">Más información</Link>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
+
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-12">
+                    <Button asChild variant="outline" size="lg">
+                        <Link href="/login">Iniciar sesión (elegir tipo)</Link>
+                    </Button>
+                    <Button asChild size="lg">
+                        <a href="/#contacto">Hablar con ventas</a>
+                    </Button>
+                </div>
+            </div>
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 }
