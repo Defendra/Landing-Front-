@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Footer } from "@/components/landing/footer";
 import { Header } from "@/components/landing/header";
-import { Bot, GanttChartSquare, Users, BarChart, ShieldCheck, MapPin, Building, Clock, BookUser, MessageSquare, FileText } from "lucide-react";
+import { Bot, GanttChartSquare, Users, BarChart, ShieldCheck, MapPin, Building, Clock, BookUser, MessageSquare, FileText, Info } from "lucide-react";
 import Link from "next/link";
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart as RechartsBarChart, XAxis, YAxis, Tooltip, Legend, Bar, CartesianGrid } from 'recharts';
+import { Tooltip as ShadTooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 
 const guardFeatures = [
@@ -30,10 +31,10 @@ const adminFeatures = [
 
 
 const guardDonutData = [
-  { name: 'Completed', value: 62 },
-  { name: 'Remaining', value: 38 },
+  { name: 'Completado', value: 62 },
+  { name: 'Restante', value: 38 },
 ];
-const GUARD_COLORS = ['hsl(var(--primary))', 'hsl(var(--primary) / 0.3)'];
+const GUARD_COLORS = ['hsl(var(--primary))', 'hsl(var(--accent))'];
 
 const adminCoverageData = [
   { hour: '08:00', required: 120, scheduled: 120, present: 118 },
@@ -70,28 +71,49 @@ export default function ProfilesOverviewPage() {
                     {/* Guardia Card */}
                     <Card className="h-full flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl bg-background">
                         <CardHeader>
-                            <div className="aspect-video w-full overflow-hidden rounded-lg object-cover mb-4 bg-card p-4">
+                             <div className="flex justify-between items-center">
+                                <div>
+                                    <CardTitle className="font-headline text-2xl font-bold text-left">Para el Guardia</CardTitle>
+                                    <CardDescription className="text-left text-muted-foreground">
+                                        Avance del turno y control desde el móvil.
+                                    </CardDescription>
+                                </div>
+                                <TooltipProvider>
+                                    <ShadTooltip>
+                                        <TooltipTrigger asChild>
+                                            <Button variant="ghost" size="icon">
+                                                <Info className="h-5 w-5 text-muted-foreground" />
+                                            </Button>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p className="max-w-xs">El avance se calcula desde un check-in biométrico válido (selfie+GPS). Los datos son ilustrativos.</p>
+                                        </TooltipContent>
+                                    </ShadTooltip>
+                                </TooltipProvider>
+                            </div>
+                        </CardHeader>
+                        <CardContent className="p-6 flex-grow flex flex-col">
+                           <div className="aspect-square w-full max-w-sm mx-auto overflow-hidden rounded-lg object-cover mb-4 bg-card p-4 relative">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <PieChart>
-                                        <Pie data={guardDonutData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#8884d8" paddingAngle={5} labelLine={false}>
+                                        <Pie data={guardDonutData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius="60%" outerRadius="80%" fill="#8884d8" paddingAngle={5} labelLine={false}>
                                             {guardDonutData.map((entry, index) => (
-                                                <Cell key={`cell-${index}`} fill={GUARD_COLORS[index % GUARD_COLORS.length]} />
+                                                <Cell key={`cell-${index}`} fill={GUARD_COLORS[index % GUARD_COLORS.length]} className={cn(index === 0 ? 'stroke-primary' : 'stroke-accent/50')} />
                                             ))}
                                         </Pie>
                                         <Tooltip contentStyle={{backgroundColor: 'hsl(var(--background))', border: '1px solid hsl(var(--border))' }}/>
-                                        <text x="50%" y="45%" textAnchor="middle" dominantBaseline="middle" className="fill-foreground text-sm font-light">Avance</text>
-                                        <text x="50%" y="58%" textAnchor="middle" dominantBaseline="middle" className="fill-primary font-bold text-3xl">
-                                            {`${guardDonutData[0].value}%`}
-                                        </text>
                                     </PieChart>
                                 </ResponsiveContainer>
-                            </div>
-                            <CardTitle className="font-headline text-2xl font-bold text-center">Para el Guardia</CardTitle>
-                            <CardDescription className="text-center text-muted-foreground">
-                                **Avance del turno** — Progreso en tiempo real con check-in biométrico y minutas registradas. *Datos ilustrativos*.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="p-6 flex-grow flex flex-col">
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                                    <p className="text-4xl font-bold text-primary">62%</p>
+                                    <p className="text-sm text-muted-foreground font-medium">Completado</p>
+                                    <p className="text-xs text-muted-foreground mt-2">Restante: 3h 05m</p>
+                                    <p className="text-xs text-muted-foreground">Horario: 08:00 - 16:00</p>
+                                </div>
+                           </div>
+                           <p className="text-center text-sm text-muted-foreground mt-2 mb-6">
+                                Progreso en tiempo real con check-in biométrico y minutas registradas. <br/><em>Datos ilustrativos.</em>
+                            </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                 {guardFeatures.map((feature) => (
                                     <div key={feature.title} className="border rounded-lg p-4 flex flex-col items-start text-left h-full bg-card">
@@ -113,6 +135,12 @@ export default function ProfilesOverviewPage() {
                     {/* Administrador Card */}
                     <Card className="h-full flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl bg-background">
                          <CardHeader>
+                            <CardTitle className="font-headline text-2xl font-bold text-center">Para el Administrador</CardTitle>
+                            <CardDescription className="text-center text-muted-foreground">
+                                Compara requeridos, programados y presentes para detectar vacíos.
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6 flex-grow flex flex-col">
                             <div className="aspect-video w-full overflow-hidden rounded-lg object-cover mb-4 bg-card p-4">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <RechartsBarChart data={adminCoverageData}>
@@ -130,12 +158,9 @@ export default function ProfilesOverviewPage() {
                                     </RechartsBarChart>
                                 </ResponsiveContainer>
                             </div>
-                            <CardTitle className="font-headline text-2xl font-bold text-center">Para el Administrador</CardTitle>
-                            <CardDescription className="text-center text-muted-foreground">
-                                **Cobertura en tiempo real** — Compara requeridos, programados y presentes para detectar vacíos y actuar. *Datos ilustrativos*.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="p-6 flex-grow flex flex-col">
+                             <p className="text-center text-sm text-muted-foreground mt-2 mb-6">
+                                **Cobertura en tiempo real** — Compara requeridos, programados y presentes para detectar vacíos y actuar. <em>Datos ilustrativos</em>.
+                            </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                 {adminFeatures.map((feature) => (
                                     <div key={feature.title} className="border rounded-lg p-4 flex flex-col items-start text-left h-full bg-card">
@@ -170,4 +195,3 @@ export default function ProfilesOverviewPage() {
     </div>
   );
 }
-
