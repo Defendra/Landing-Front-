@@ -1,24 +1,25 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Link from "next/link";
 import { Header } from "@/components/landing/header";
 import { Footer } from "@/components/landing/footer";
+import { Camera, FileText, BookUser } from "lucide-react";
 
 export default function LoginChoicePage() {
     return (
-        <div className="flex min-h-screen w-full flex-col bg-background">
+        <div className="flex min-h-screen w-full flex-col bg-gray-50 dark:bg-black">
             <Header />
-            <main className="flex-1 flex items-center justify-center">
-                <div className="container max-w-4xl py-12">
+            <main className="flex-1 flex items-center justify-center py-12 px-4">
+                <div className="w-full max-w-5xl mx-auto">
                     <div className="grid gap-8 md:grid-cols-2">
-                        <Card className="h-full">
+                        <Card className="flex flex-col shadow-lg">
                             <CardHeader>
                                 <CardTitle className="font-headline text-2xl">Soy Administrador</CardTitle>
                             </CardHeader>
-                            <CardContent className="flex flex-col h-full">
-                                <p className="text-muted-foreground mb-6 flex-grow">
-                                    Tu empresa es la encargada del registro y te suministra las credenciales de acceso.
-                                </p>
+                            <CardContent className="flex flex-col flex-grow">
+                                <CardDescription className="mb-6 flex-grow">
+                                    Tu empresa gestiona tu registro y te brinda credenciales de acceso.
+                                </CardDescription>
                                 <Button asChild className="w-full">
                                     <Link href="#">Ingresar como Administrador</Link>
                                 </Button>
@@ -27,27 +28,27 @@ export default function LoginChoicePage() {
                                 </p>
                             </CardContent>
                         </Card>
-                        <Card className="h-full">
+                        <Card className="flex flex-col shadow-lg">
                             <CardHeader>
                                 <CardTitle className="font-headline text-2xl">Soy Guardia</CardTitle>
                             </CardHeader>
-                            <CardContent className="flex flex-col h-full">
-                                <p className="text-muted-foreground mb-6 flex-grow">
-                                    Realiza tu registro completo con verificación de identidad y carga de documentos.
-                                </p>
-                                <div className="flex flex-col sm:flex-row gap-2">
+                            <CardContent className="flex flex-col flex-grow">
+                                <CardDescription className="mb-6 flex-grow">
+                                    Regístrate fácilmente con verificación de identidad y carga de documentos.
+                                </CardDescription>
+                                <ul className="text-sm text-muted-foreground mb-6 space-y-2 list-inside">
+                                    <li className="flex items-center gap-2"><Camera /> Selfie biométrica + documento</li>
+                                    <li className="flex items-center gap-2"><FileText /> Datos de contacto y bancarios</li>
+                                    <li className="flex items-center gap-2"><BookUser /> Cursos/licencias y soportes</li>
+                                </ul>
+                                <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                                      <Button asChild variant="secondary" className="flex-1">
                                         <Link href="#">Ya tengo cuenta</Link>
                                     </Button>
                                     <Button asChild className="flex-1">
-                                        <Link href="#">Iniciar Registro</Link>
+                                        <Link href="/guardia/onboarding">Iniciar Registro</Link>
                                     </Button>
                                 </div>
-                                <ul className="text-sm text-muted-foreground mt-4 space-y-1 list-disc list-inside">
-                                    <li>Selfie biométrica + documento</li>
-                                    <li>Datos de contacto y bancarios</li>
-                                    <li>Cursos/licencias y soportes</li>
-                                </ul>
                             </CardContent>
                         </Card>
                     </div>

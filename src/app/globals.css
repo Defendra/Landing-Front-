@@ -11,8 +11,8 @@ section[id] {
 }
 
 .hero-gradient {
-  background: radial-gradient(1200px 600px at -10% -10%, #eaf2ff 0%, transparent 60%),
-              radial-gradient(800px 400px at 110% 0%, #e8fff4 0%, transparent 55%),
+  background: radial-gradient(1200px 600px at -10% -10%, hsl(var(--primary) / 0.1), transparent 60%),
+              radial-gradient(800px 400px at 110% 0%, hsl(var(--primary) / 0.1), transparent 55%),
               #f6fbff;
 }
 
@@ -25,26 +25,26 @@ section[id] {
 
 @layer base {
   :root {
-    --background: 180 52% 96%;
+    --background: 210 20% 98%;
     --foreground: 224 71.4% 4.1%;
-    --card: 180 52% 96%;
+    --card: 0 0% 100%;
     --card-foreground: 224 71.4% 4.1%;
-    --popover: 180 52% 96%;
+    --popover: 0 0% 100%;
     --popover-foreground: 224 71.4% 4.1%;
-    --primary: 180 100% 25%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 180 20% 90%;
+    --primary: 174 100% 27%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 180 20% 90%;
+    --muted: 210 20% 96.1%;
     --muted-foreground: 220 8.9% 46.1%;
-    --accent: 30 79% 62%;
+    --accent: 210 20% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 180 20% 85%;
-    --input: 180 20% 85%;
-    --ring: 180 100% 25%;
-    --radius: 0.5rem;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 91%;
+    --input: 210 20% 91%;
+    --ring: 174 100% 27%;
+    --radius: 1rem;
     --chart-1: 221 83% 53%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -59,7 +59,7 @@ section[id] {
     --card-foreground: 210 20% 98%;
     --popover: 224 71.4% 4.1%;
     --popover-foreground: 210 20% 98%;
-    --primary: 218 81.2% 76.5%;
+    --primary: 174 80% 50%;
     --primary-foreground: 220.9 39.3% 11%;
     --secondary: 215 27.9% 16.9%;
     --secondary-foreground: 210 20% 98%;
@@ -71,7 +71,7 @@ section[id] {
     --destructive-foreground: 210 20% 98%;
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
-    --ring: 218 81.2% 76.5%;
+    --ring: 174 80% 50%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
