@@ -3,7 +3,7 @@ import { Footer } from "@/components/landing/footer";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Briefcase, Users, FileText, Archive, Bell, Banknote, Settings, LayoutDashboard, Wand2, Forward, FileSpreadsheet } from "lucide-react";
+import { Briefcase, Users, FileText, Archive, Bell, Banknote, Settings, LayoutDashboard, Wand2, Forward, FileSpreadsheet, CalendarStats, ClipboardCheck, BuildingWarehouse, BarChart } from "lucide-react";
 
 const quickActions = [
     {
@@ -38,6 +38,29 @@ const modules = [
     { title: 'Nómina', desc: 'Pre-liquidación por horas y novedades.', to: '/admin/nomina', icon: <Banknote className="h-8 w-8 mx-auto mb-4 text-primary" /> },
     { title: 'Administración', desc: 'Usuarios, roles, permisos, modalidades.', to: '/admin/configuracion', icon: <Settings className="h-8 w-8 mx-auto mb-4 text-primary" /> },
     { title: 'Dashboard', desc: 'KPIs accionables en tiempo real.', to: '/admin/dashboard', icon: <LayoutDashboard className="h-8 w-8 mx-auto mb-4 text-primary" /> },
+];
+
+const adminFeatures = [
+    {
+        icon: <CalendarStats className="h-9 w-9 text-primary" />,
+        title: "Programación y Cobertura",
+        description: "Planifica por puesto o por persona, visualiza coberturas y detecta vacíos con anticipación.",
+    },
+    {
+        icon: <ClipboardCheck className="h-9 w-9 text-primary" />,
+        title: "Novedades del Personal",
+        description: "Centraliza vacaciones, incapacidades y permisos. Aprobación ágil y trazabilidad completa.",
+    },
+    {
+        icon: <BuildingWarehouse className="h-9 w-9 text-primary" />,
+        title: "Clientes y Contratos",
+        description: "Archivo comercial, sedes y puestos. Relaciona cada servicio con su ficha técnica y condiciones.",
+    },
+    {
+        icon: <BarChart className="h-9 w-9 text-primary" />,
+        title: "Reportes y KPIs",
+        description: "Indicadores de cobertura, incidentes y desempeño. Exporta reportes para seguimiento y auditoría.",
+    },
 ];
 
 const keyFlows = [
@@ -87,9 +110,29 @@ export default function AdminPage() {
                     </div>
                 </section>
 
-                {/* Acciones Rápidas */}
+                {/* Features */}
                 <section className="w-full py-12 md:py-24">
                     <div className="container px-4 md:px-6">
+                         <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:grid-cols-4">
+                            {adminFeatures.map((feature, index) => (
+                                <div key={index} className="grid gap-1 text-center">
+                                    <div className="flex justify-center items-center mb-4">
+                                        {feature.icon}
+                                    </div>
+                                    <h3 className="text-xl font-bold font-headline">{feature.title}</h3>
+                                    <p className="text-muted-foreground">{feature.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Acciones Rápidas */}
+                <section className="w-full py-12 md:py-24 bg-secondary/30">
+                    <div className="container px-4 md:px-6">
+                        <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
+                            Acciones Rápidas
+                        </h2>
                         <div className="grid gap-6 md:grid-cols-3">
                             {quickActions.map((action, index) => (
                                 <Card key={index} className="h-full">
@@ -107,7 +150,7 @@ export default function AdminPage() {
 
 
                 {/* Mosaico de módulos */}
-                <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+                <section className="w-full py-12 md:py-24 lg:py-32">
                     <div className="container px-4 md:px-6">
                         <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
                             Módulos del Administrador
@@ -128,7 +171,7 @@ export default function AdminPage() {
                 </section>
 
                 {/* Flujos clave */}
-                <section className="w-full py-12 md:py-24">
+                <section className="w-full py-12 md:py-24 bg-secondary/30">
                     <div className="container px-4 md:px-6">
                         <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
                             Flujos Clave
