@@ -1,12 +1,8 @@
-import type {Config} from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
-export default {
-  darkMode: ['class'],
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+const config: Config = {
+  darkMode: ["class"],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
@@ -16,11 +12,18 @@ export default {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", "sans-serif"],
-        headline: ["Univia Pro", "sans-serif"],
-      },
       colors: {
+        brand: {
+          navy:    "#0B1130",
+          indigo:  "#121A49",
+          blue600: "#1C44FF",
+          blue400: "#4BA3FF",
+          cyan300: "#7FE8FF",
+          orange:  "#FF7A00",
+          white:   "#FFFFFF",
+          gray300: "#A9B1C7",
+          gray500: "#7B86A5",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -54,41 +57,37 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        brand: {
-          DEFAULT: '#0F1738',
-          light: '#16204B',
-          accent: '#1E6CFF',
-          sky: '#7AB8FF'
-        }
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
+        xl: "20px",
+        lg: "14px",
+        md: "10px",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        brand: "0 10px 30px rgba(16, 24, 64, .35)",
+      },
+      fontFamily: {
+        display: ["Univia Pro", "ui-sans-serif", "system-ui"],
+        body:    ["Univia Pro", "ui-sans-serif", "system-ui"],
+        headline: ["Univia Pro", "sans-serif"],
+      },
       keyframes: {
-        'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
-} satisfies Config;
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
+};
+export default config;

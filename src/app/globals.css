@@ -3,99 +3,120 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Univia Pro';
-  src: url('/fonts/univia/UniviaPro-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  font-family: "Univia Pro";
+  src: url("/fonts/univia/UniviaPro-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
 }
-
 @font-face {
-  font-family: 'Univia Pro';
-  src: url('/fonts/univia/UniviaPro-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+  font-family: "Univia Pro";
+  src: url("/fonts/univia/UniviaPro-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
 }
-
 @font-face {
-  font-family: 'Univia Pro';
-  src: url('/fonts/univia/UniviaPro-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+  font-family: "Univia Pro";
+  src: url("/fonts/univia/UniviaPro-Light.woff2") format("woff2");
+  font-weight: 300; font-style: normal; font-display: swap;
 }
-
 
 @layer base {
   :root {
-    --background: 13 12 47; /* #0D0C2F */
-    --foreground: 210 20% 98%; /* #F8FAFB */
-    --card: 16 22 55; /* #101637 - A slightly lighter shade for cards */
-    --card-foreground: 210 20% 98%;
-    --popover: 13 12 47;
-    --popover-foreground: 210 20% 98%;
-    --primary: 221 100% 50%; /* #0062FE - accent */
-    --primary-foreground: 210 20% 98%;
-    --secondary: 218 44% 78%; /* #B9C6E1 - sky lightened for text */
-    --secondary-foreground: 13 12 47;
-    --muted: 225 21% 26%;
-    --muted-foreground: 206 21% 77%; /* #A9B8C4 */
-    --accent: 196 90% 52%; /* #12C5F4 */
-    --accent-foreground: 13 12 47;
-    --destructive: 23 98% 50%; /* #FE7202 */
-    --destructive-foreground: 210 20% 98%;
-    --border: 29 42 82; /* #1D2A52 */
-    --input: 29 42 82;
-    --ring: 221 100% 50%;
+    --background: 236 71% 12%; /* #0B1130 */
+    --foreground: 220 17% 98%; /* #F8FAFC */
+    
+    --card: 235 60% 18%; /* #121A49 */
+    --card-foreground: 220 17% 98%;
+
+    --popover: 236 71% 12%;
+    --popover-foreground: 220 17% 98%;
+
+    --primary: 226 100% 55%; /* #1C44FF */
+    --primary-foreground: 220 17% 98%;
+
+    --secondary: 26 100% 50%; /* #FF7A00 */
+    --secondary-foreground: 220 17% 98%;
+
+    --muted: 223 21% 39%; /* #555F80 */
+    --muted-foreground: 223 20% 70%; /* #A9B1C7 */
+    
+    --accent: 205 100% 64%; /* #4BA3FF */
+    --accent-foreground: 236 71% 12%;
+
+    --destructive: 0 100% 50%; /* Red for errors */
+    --destructive-foreground: 220 17% 98%;
+
+    --border: 240 3.7% 15.9%; /* Based on white/10 over navy */
+    --input: 240 3.7% 15.9%;
+    --ring: 226 100% 55%;
+
     --radius: 0.75rem;
   }
-
+ 
   .dark {
-    --background: 13 12 47;
-    --foreground: 210 20% 98%;
-    --card: 16 22 55;
-    --card-foreground: 210 20% 98%;
-    --popover: 13 12 47;
-    --popover-foreground: 210 20% 98%;
-    --primary: 221 100% 50%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 218 44% 78%;
-    --secondary-foreground: 13 12 47;
-    --muted: 225 21% 26%;
-    --muted-foreground: 206 21% 77%;
-    --accent: 196 90% 52%;
-    --accent-foreground: 13 12 47;
-    --destructive: 23 98% 50%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 29 42 82;
-    --input: 29 42 82;
-    --ring: 221 100% 50%;
+     /* Re-declaring for dark mode specificity */
+    --background: 236 71% 12%;
+    --foreground: 220 17% 98%;
+    --card: 235 60% 18%;
+    --card-foreground: 220 17% 98%;
+    --popover: 236 71% 12%;
+    --popover-foreground: 220 17% 98%;
+    --primary: 226 100% 55%;
+    --primary-foreground: 220 17% 98%;
+    --secondary: 26 100% 50%;
+    --secondary-foreground: 220 17% 98%;
+    --muted: 223 21% 39%;
+    --muted-foreground: 223 20% 70%;
+    --accent: 205 100% 64%;
+    --accent-foreground: 236 71% 12%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 220 17% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 226 100% 55%;
   }
 }
-
+ 
 @layer base {
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+  html, body {
+    @apply bg-brand-navy text-brand-white font-body antialiased;
+    color-scheme: dark;
+  }
+
+  .hero-bg {
+    background:
+      radial-gradient(1200px 500px at 80% -10%, rgba(28,68,255,.35), transparent 55%),
+      radial-gradient(700px 400px at 15% 10%, rgba(127,232,255,.20), transparent 65%),
+      linear-gradient(180deg, #0B1130 0%, #121A49 100%);
   }
 }
 
-section[id] {
-  scroll-margin-top: 80px; 
-}
+@layer components {
+  /* Píldoras/badges y cards */
+  .card {
+    @apply rounded-xl bg-brand-indigo/50 backdrop-blur-md shadow-brand border border-white/5;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-md px-3 py-1 text-sm bg-white/5 text-brand-gray300;
+  }
 
-.font-headline {
-  font-family: 'Univia Pro', sans-serif; 
-}
+  /* Botones */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg font-medium px-5 py-3 transition;
+  }
+  .btn-primary {
+    @apply bg-brand-blue600 text-brand-white hover:bg-brand-blue400 shadow-brand;
+  }
+  .btn-secondary {
+    @apply bg-brand-orange text-brand-white hover:brightness-110 shadow-brand;
+  }
+  .btn-ghost {
+    @apply bg-white/10 text-brand-white hover:bg-white/20;
+  }
 
-body {
-  font-family: 'Univia Pro', sans-serif;
-}
-
-.hero-gradient {
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(var(--primary) / 0.1), transparent),
-              hsl(var(--background));
+  /* Enlaces de navbar */
+  .nav-link {
+    @apply text-brand-gray300 hover:text-brand-white transition;
+  }
 }
