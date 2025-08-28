@@ -1,22 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import { Inter, Poppins } from 'next/font/google'
 import { cn } from '@/lib/utils';
-
-const fontSans = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-sans',
-  weight: ['400', '500', '700']
-})
-
-const fontHeadline = Poppins({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-headline',
-  weight: ['300', '400', '700']
-})
 
 export const metadata: Metadata = {
   title: 'Defendra | La Nueva Era de la Seguridad Privada en Colombia',
@@ -53,9 +38,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark" style={{colorScheme: 'dark'}} suppressHydrationWarning>
       <body className={cn(
-        "min-h-screen bg-background font-sans antialiased",
-        fontSans.variable,
-        fontHeadline.variable
+        "min-h-screen bg-brand font-headline antialiased",
       )}>
         {children}
         <Toaster />

@@ -18,6 +18,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
+        headline: ["Univia Pro", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -53,6 +54,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brand: {
+          DEFAULT: '#0F1738',
+          light: '#16204B',
+          accent: '#1E6CFF',
+          sky: '#7AB8FF'
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -83,5 +90,5 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
 } satisfies Config;

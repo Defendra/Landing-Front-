@@ -5,29 +5,30 @@ import Link from "next/link";
 import { Menu, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { useWhatsAppCTA } from "@/hooks/useWhatsAppCTA";
+
 
 const navLinks = [
-  { href: "/#solucion", label: "Solución", id: "solucion" },
-  { href: "/#roles", label: "Roles", id: "roles" },
-  { href: "/#audiences", label: "Audiencias", id: "audiences" },
-  { href: "/#testimonios", label: "Clientes", id: "testimonios" },
-  { href: "/blog", label: "Blog", id: "blog" },
-  { href: "/#contacto", label: "Contacto", id: "contacto" },
+  { href: "/#solucion", label: "Solución" },
+  { href: "/#roles", label: "Roles" },
+  { href: "/#audiences", label: "Audiencias" },
+  { href: "/#testimonios", label: "Clientes" },
+  { href: "/blog", label: "Recursos" },
 ];
 
 function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2" prefetch={false}>
-      <Shield className="h-7 w-7 text-primary" />
+      <Shield className="h-7 w-7 text-brand-accent" />
       <span className="font-headline text-2xl font-bold text-foreground">Defendra</span>
     </Link>
   );
 }
 
-function NavMenu({ isMobile = false, activeSection, onLinkClick }: { isMobile?: boolean, activeSection: string, onLinkClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void }) {
+function NavMenu({ isMobile = false, onLinkClick }: { isMobile?: boolean, onLinkClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void }) {
   const NavElement = isMobile ? 'div' : 'nav';
   const containerClasses = isMobile 
     ? "grid gap-6 text-lg font-medium" 
@@ -40,12 +41,7 @@ function NavMenu({ isMobile = false, activeSection, onLinkClick }: { isMobile?: 
           key={link.href}
           href={link.href}
           onClick={(e) => onLinkClick(e, link.href)}
-          className={cn(
-            "transition-colors hover:text-primary cursor-pointer",
-            (activeSection === link.id || (link.id === 'blog' && usePathname().startsWith('/blog')))
-              ? "text-primary font-semibold" 
-              : "text-muted-foreground"
-          )}
+          className="transition-colors hover:text-brand-accent text-muted-foreground cursor-pointer"
         >
           {link.label}
         </a>
@@ -56,85 +52,33 @@ function NavMenu({ isMobile = false, activeSection, onLinkClick }: { isMobile?: 
 
 export function Header() {
   const pathname = usePathname();
-  const router = useRouter();
-  const [activeSection, setActiveSection] = React.useState('inicio');
   const [isSheetOpen, setIsSheetOpen] = React.useState(false);
+  const { whatsappUrl } = useWhatsAppCTA('Hola, quiero hablar con un asesor de Defendra.');
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const isBlogPage = pathname.startsWith('/blog');
-
+    const targetId = href.substring(href.indexOf('#') + 1);
+    const targetElement = document.getElementById(targetId);
+    
     if (href.startsWith('/blog')) {
-        router.push('/blog');
-        if (isSheetOpen) setIsSheetOpen(false);
-        return;
-    }
-
-    if (href.startsWith('/#')) {
-        const targetId = href.substring(2);
-        if (pathname !== '/') {
-            router.push('/#' + targetId);
-        } else {
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                const yOffset = -80; 
-                const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                window.scrollTo({top: y, behavior: 'smooth'});
-            }
-        }
+      window.location.href = href;
+    } else if (targetElement) {
+      const yOffset = -80; 
+      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({top: y, behavior: 'smooth'});
     } else {
-         router.push(href);
+      window.location.href = href;
     }
     
     if (isSheetOpen) setIsSheetOpen(false);
   };
 
-  React.useEffect(() => {
-    const handleScrollAndLoad = () => {
-        if (pathname !== '/') {
-          const pathId = pathname.split('/')[1] || 'inicio';
-          setActiveSection(pathId);
-          return;
-        };
-
-        const sections = navLinks
-            .map(link => link.id && document.getElementById(link.id))
-            .filter(Boolean);
-
-        let currentSection = '';
-        
-        const scrollPosition = window.scrollY + 100;
-
-        for (const section of sections) {
-            if (section) {
-                if (section.offsetTop <= scrollPosition) {
-                    currentSection = section.id;
-                }
-            }
-        }
-        
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
-            const lastSection = navLinks.find(l => l.id === 'contacto' && document.getElementById(l.id));
-            if(lastSection) currentSection = lastSection.id;
-        }
-
-        if (scrollPosition < 100) {
-            currentSection = 'inicio';
-        }
-        setActiveSection(currentSection);
-    }
-    
-    handleScrollAndLoad(); 
-    window.addEventListener("scroll", handleScrollAndLoad);
-    return () => window.removeEventListener("scroll", handleScrollAndLoad);
-  }, [pathname]);
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-brand/80 backdrop-blur supports-[backdrop-filter]:bg-brand/60">
       <div className="container flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         <Logo />
         <div className="flex items-center gap-4">
-          <NavMenu activeSection={activeSection} onLinkClick={handleLinkClick} />
+          <NavMenu onLinkClick={handleLinkClick} />
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden shrink-0">
@@ -147,12 +91,12 @@ export function Header() {
                 <div className="mb-4">
                   <Logo />
                 </div>
-                 <NavMenu isMobile={true} activeSection={activeSection} onLinkClick={handleLinkClick} />
+                 <NavMenu isMobile={true} onLinkClick={handleLinkClick} />
               </nav>
             </SheetContent>
           </Sheet>
-          <Button asChild>
-            <Link href="/login">Iniciar Sesión</Link>
+          <Button asChild className="bg-brand-accent hover:bg-brand-accent/90">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
           </Button>
         </div>
       </div>

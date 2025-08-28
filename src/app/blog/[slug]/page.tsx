@@ -1,21 +1,15 @@
-
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Footer } from '@/components/landing/footer';
 import { Header } from '@/components/landing/header';
-import { BlogPost } from '@/components/landing/blog';
 import { mockPosts } from '../blog-data';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
+type Post = (typeof mockPosts)[0];
 
-type PostDetail = BlogPost & {
-  html: string; // o MDX renderizado
-};
-
-
-async function getPost(slug: string): Promise<PostDetail | null> {
+async function getPost(slug: string): Promise<(Post & { html: string }) | null> {
   const post = mockPosts.find(p => p.slug === slug);
   if (!post) return null;
 
@@ -30,7 +24,7 @@ async function getPost(slug: string): Promise<PostDetail | null> {
       <li><strong>Control de personal y equipamiento:</strong> Supervisa la idoneidad del personal (cursos, exámenes) y el correcto manejo de armas y equipos.</li>
       <li><strong>Imponer sanciones:</strong> Puede imponer multas, suspensiones o incluso cancelar licencias por incumplimiento.</li>
     </ul>
-    <blockquote class="border-l-4 border-primary pl-4 italic my-6">
+    <blockquote class="border-l-4 border-brand-accent pl-4 italic my-6">
       "La plataforma de Defendra está diseñada para alinear tus procesos con los requerimientos de la Supervigilancia, convirtiendo el cumplimiento en una tarea simple y automatizada."
     </blockquote>
     <h2 class="text-2xl font-headline font-bold mt-8 mb-4">¿Cómo te ayuda Defendra?</h2>
@@ -57,11 +51,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${post.title} | Blog de Defendra`,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      images: [post.coverUrl],
-    },
   };
 }
 
@@ -75,7 +64,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <main className="flex-1 py-12 md:py-20">
         <article className="mx-auto max-w-3xl px-4">
           <header className="mb-8 text-center">
-            <Link href="/blog" className='text-sm text-primary hover:underline'>← Volver al blog</Link>
+            <Link href="/blog" className='text-sm text-brand-accent hover:underline'>← Volver al blog</Link>
             <h1 className="mt-4 font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">{post.title}</h1>
             <p className="mt-4 text-lg text-muted-foreground">{post.excerpt}</p>
             <div className="mt-6 flex items-center justify-center gap-4 text-sm text-muted-foreground">
@@ -83,7 +72,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 <span>•</span>
                 <span>{post.readMins} min de lectura</span>
                  <span>•</span>
-                <span className='text-primary font-medium'>{post.category}</span>
+                <span className='text-brand-accent font-medium'>{post.category}</span>
             </div>
           </header>
           <div className="relative aspect-[16/9] mb-8 rounded-2xl overflow-hidden shadow-2xl">
@@ -94,10 +83,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 "prose prose-lg prose-invert max-w-none",
                 "prose-headings:font-headline prose-headings:font-bold prose-headings:text-foreground",
                 "prose-p:text-muted-foreground",
-                "prose-a:text-primary prose-a:no-underline hover:prose-a:underline",
+                "prose-a:text-brand-accent prose-a:no-underline hover:prose-a:underline",
                 "prose-strong:text-foreground",
-                "prose-ul:text-muted-foreground prose-li:marker:text-primary",
-                "prose-blockquote:border-primary prose-blockquote:text-muted-foreground prose-blockquote:font-normal"
+                "prose-ul:text-muted-foreground prose-li:marker:text-brand-accent",
+                "prose-blockquote:border-brand-accent prose-blockquote:text-muted-foreground prose-blockquote:font-normal"
                 )}
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
