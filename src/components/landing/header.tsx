@@ -57,12 +57,16 @@ export function Header() {
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const targetId = href.substring(href.indexOf('#') + 1);
-    const targetElement = document.getElementById(targetId);
     
     if (href.startsWith('/blog')) {
       window.location.href = href;
-    } else if (pathname === '/') {
+      return;
+    }
+
+    const targetId = href.substring(href.indexOf('#') + 1);
+    
+    if (pathname === '/') {
+        const targetElement = document.getElementById(targetId);
         if (targetElement) {
             const yOffset = -80; 
             const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -70,7 +74,8 @@ export function Header() {
         }
     }
     else {
-      window.location.href = `/${href}`;
+      // If we are not on the home page, navigate to home with the hash
+      window.location.href = `/${href.startsWith('/#') ? href.substring(1) : href}`;
     }
     
     if (isSheetOpen) setIsSheetOpen(false);
