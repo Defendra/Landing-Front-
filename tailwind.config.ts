@@ -1,46 +1,71 @@
 import type { Config } from "tailwindcss";
 
-const config: Config = {
-  content: ["./src/**/*.{ts,tsx,mdx}"],
+const config = {
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
+  prefix: "",
   theme: {
-    container: { center: true, padding: "1rem" },
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
-      fontFamily: {
-        univia: ['"Univia Pro"', "Inter", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
+       fontFamily: {
+        sans: ['"Univia Pro"', "Inter", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
+        headline: ['"Univia Pro"', "Inter", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         brand: {
-          midnight: "#0B1023",
-          indigo: "#1F3B8A",
-          electric: "#2B6CFF",
-          glow: "#13B8FF",
-          orange: "#FF7A00",
+            accent: "hsl(var(--brand-accent))"
         },
-        ink: {
-          900: "#EAEFFB",
-          800: "#C9D4EA",
-          600: "#A3B1C9",
-          400: "#7A86A0",
-          200: "#4D5870",
-          100: "#2D3447",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
-        success: "#16C784",
-        warn: "#FFB020",
-        danger: "#FF4D4D",
-      },
-      backgroundImage: {
-        "radial-hero":
-          "radial-gradient(1200px 600px at 20% 0%, rgba(19,184,255,0.18), transparent 60%), radial-gradient(900px 500px at 80% -10%, rgba(43,108,255,0.2), transparent 55%)",
-      },
-      boxShadow: {
-        brand: "0 10px 25px rgba(0,0,0,0.35)",
-        glow: "0 0 0 8px rgba(43,108,255,0.12)",
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
       borderRadius: {
-        xl: "14px",
-        "2xl": "18px",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
       },
-       keyframes: {
+      keyframes: {
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -56,6 +81,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-};
-export default config;
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+} satisfies Config
+
+export default config

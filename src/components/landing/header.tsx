@@ -62,19 +62,22 @@ export function Header() {
     
     if (href.startsWith('/blog')) {
       window.location.href = href;
-    } else if (targetElement) {
-      const yOffset = -80; 
-      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({top: y, behavior: 'smooth'});
-    } else {
-      window.location.href = href;
+    } else if (pathname === '/') {
+        if (targetElement) {
+            const yOffset = -80; 
+            const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'smooth'});
+        }
+    }
+    else {
+      window.location.href = `/${href}`;
     }
     
     if (isSheetOpen) setIsSheetOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-brand/80 backdrop-blur supports-[backdrop-filter]:bg-brand/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         <Logo />
         <div className="flex items-center gap-4">

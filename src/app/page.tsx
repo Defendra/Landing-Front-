@@ -1,24 +1,27 @@
-import Navbar from "@/components/ui/Navbar";
-import Hero from "@/components/sections/Hero";
-import Stats from "@/components/sections/Stats";
-import Solution from "@/components/sections/Solution";
-import Clients from "@/components/sections/Clients";
-import CTA from "@/components/sections/CTA";
-import Footer from "@/components/ui/Footer";
+import { Header } from "@/components/landing/header";
+import { Hero } from "@/components/landing/hero";
+import { ValueProposition } from "@/components/landing/value-proposition";
+import { Profiles } from "@/components/landing/profiles";
+import { TargetAudience } from "@/components/landing/target-audience";
+import { Testimonials } from "@/components/landing/testimonials";
+import { BlogPanel, BlogPost } from '@/components/landing/blog';
+import { Footer } from "@/components/landing/footer";
+import { mockPosts } from "./blog/blog-data";
 
-export default function Page() {
+
+export default function Home() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        {/* The following components are placeholders and will need to be implemented */}
-        {/* <Stats /> */}
-        {/* <Solution /> */}
-        {/* <Clients /> */}
-        {/* <CTA /> */}
-      </main>
-      <Footer />
-    </>
+    <div className="flex min-h-screen w-full flex-col">
+        <Header />
+        <main className="flex-1">
+            <Hero />
+            <ValueProposition />
+            <Profiles />
+            <TargetAudience />
+            <Testimonials />
+            <BlogPanel posts={mockPosts} />
+        </main>
+        <Footer />
+    </div>
   );
 }
