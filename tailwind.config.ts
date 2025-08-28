@@ -68,9 +68,9 @@ const config: Config = {
         brand: "0 10px 30px rgba(16, 24, 64, .35)",
       },
       fontFamily: {
-        display: ["Univia Pro", "ui-sans-serif", "system-ui"],
-        body:    ["Univia Pro", "ui-sans-serif", "system-ui"],
-        headline: ["Univia Pro", "sans-serif"],
+        display: ["ui-sans-serif", "system-ui"],
+        body:    ["ui-sans-serif", "system-ui"],
+        headline: ["sans-serif"],
       },
       keyframes: {
         "accordion-down": {
