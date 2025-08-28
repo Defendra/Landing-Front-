@@ -1,47 +1,16 @@
-import type {Metadata} from 'next';
-import './globals.css';
-import { Toaster } from "@/components/ui/toaster"
-import { cn } from '@/lib/utils';
+import "./globals.css";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Defendra | La Nueva Era de la Seguridad Privada en Colombia',
-  description: 'Digitalizamos y automatizamos la operación de seguridad con IA, trazabilidad y cumplimiento. Gestión inteligente de guardias, turnos y operaciones en tiempo real.',
-  openGraph: {
-    title: 'Defendra | La Nueva Era de la Seguridad Privada en Colombia',
-    description: 'Digitalizamos y automatizamos la operación de seguridad con IA, trazabilidad y cumplimiento.',
-    url: 'https://defendra.co',
-    siteName: 'Defendra',
-    images: [
-      {
-        url: 'https://placehold.co/1200x630.png', 
-        width: 1200,
-        height: 630,
-        alt: 'Dashboard de Defendra mostrando KPIs de seguridad'
-      },
-    ],
-    locale: 'es_CO',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Defendra | La Nueva Era de la Seguridad Privada en Colombia',
-    description: 'Digitalizamos y automatizamos la operación de seguridad con IA, trazabilidad y cumplimiento.',
-    images: ['https://placehold.co/1200x630.png'],
-  },
+  title: "Defendra — Seguridad privada con IA",
+  description: "Digitalizamos y automatizamos la operación de vigilancia con IA, trazabilidad y cumplimiento.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className="dark" style={{colorScheme: 'dark'}} suppressHydrationWarning>
-      <body className={cn(
-        "min-h-screen bg-brand font-headline antialiased",
-      )}>
-        {children}
-        <Toaster />
+    <html lang="es">
+      <body className="min-h-dvh bg-brand-midnight bg-radial-hero">
+        <div className="relative isolate">{children}</div>
       </body>
     </html>
   );

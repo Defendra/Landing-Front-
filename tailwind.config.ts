@@ -1,78 +1,46 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}"],
+  content: ["./src/**/*.{ts,tsx,mdx}"],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
+    container: { center: true, padding: "1rem" },
     extend: {
+      fontFamily: {
+        univia: ['"Univia Pro"', "Inter", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
+      },
       colors: {
         brand: {
-          navy:    "#0B1130",
-          indigo:  "#121A49",
-          blue600: "#1C44FF",
-          blue400: "#4BA3FF",
-          cyan300: "#7FE8FF",
-          orange:  "#FF7A00",
-          white:   "#FFFFFF",
-          gray300: "#A9B1C7",
-          gray500: "#7B86A5",
+          midnight: "#0B1023",
+          indigo: "#1F3B8A",
+          electric: "#2B6CFF",
+          glow: "#13B8FF",
+          orange: "#FF7A00",
         },
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+        ink: {
+          900: "#EAEFFB",
+          800: "#C9D4EA",
+          600: "#A3B1C9",
+          400: "#7A86A0",
+          200: "#4D5870",
+          100: "#2D3447",
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        success: "#16C784",
+        warn: "#FFB020",
+        danger: "#FF4D4D",
       },
-      borderRadius: {
-        xl: "20px",
-        lg: "14px",
-        md: "10px",
-        sm: "calc(var(--radius) - 4px)",
+      backgroundImage: {
+        "radial-hero":
+          "radial-gradient(1200px 600px at 20% 0%, rgba(19,184,255,0.18), transparent 60%), radial-gradient(900px 500px at 80% -10%, rgba(43,108,255,0.2), transparent 55%)",
       },
       boxShadow: {
-        brand: "0 10px 30px rgba(16, 24, 64, .35)",
+        brand: "0 10px 25px rgba(0,0,0,0.35)",
+        glow: "0 0 0 8px rgba(43,108,255,0.12)",
       },
-      fontFamily: {
-        display: ["ui-sans-serif", "system-ui"],
-        body:    ["ui-sans-serif", "system-ui"],
-        headline: ["sans-serif"],
+      borderRadius: {
+        xl: "14px",
+        "2xl": "18px",
       },
-      keyframes: {
+       keyframes: {
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -88,6 +56,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
+  plugins: [require("tailwindcss-animate")],
 };
 export default config;

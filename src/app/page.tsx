@@ -1,14 +1,10 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
-import { ValueProposition } from "@/components/landing/value-proposition";
-import { Profiles } from "@/components/landing/profiles";
-import { TargetAudience } from "@/components/landing/target-audience";
-import { Testimonials } from "@/components/landing/testimonials";
-import { BlogPanel } from "@/components/landing/blog";
-import { mockPosts } from "@/app/blog/blog-data";
-import { Footer } from "@/components/landing/footer";
-
+import Navbar from "@/components/ui/Navbar";
+import Hero from "@/components/sections/Hero";
+import Stats from "@/components/sections/Stats";
+import Solution from "@/components/sections/Solution";
+import Clients from "@/components/sections/Clients";
+import CTA from "@/components/sections/CTA";
+import Footer from "@/components/ui/Footer";
 
 export default function Page() {
   return (
@@ -16,12 +12,11 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
-        <Stats />
-        <ValueProposition />
-        <Profiles />
-        <TargetAudience />
-        <Testimonials />
-        <BlogPanel posts={mockPosts} />
+        {/* The following components are placeholders and will need to be implemented */}
+        {/* <Stats /> */}
+        {/* <Solution /> */}
+        {/* <Clients /> */}
+        {/* <CTA /> */}
       </main>
       <Footer />
     </>

@@ -2,105 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 236 71% 12%; /* #0B1130 */
-    --foreground: 220 17% 98%; /* #F8FAFC */
-    
-    --card: 235 60% 18%; /* #121A49 */
-    --card-foreground: 220 17% 98%;
-
-    --popover: 236 71% 12%;
-    --popover-foreground: 220 17% 98%;
-
-    --primary: 226 100% 55%; /* #1C44FF */
-    --primary-foreground: 220 17% 98%;
-
-    --secondary: 26 100% 50%; /* #FF7A00 */
-    --secondary-foreground: 220 17% 98%;
-
-    --muted: 223 21% 39%; /* #555F80 */
-    --muted-foreground: 223 20% 70%; /* #A9B1C7 */
-    
-    --accent: 205 100% 64%; /* #4BA3FF */
-    --accent-foreground: 236 71% 12%;
-
-    --destructive: 0 100% 50%; /* Red for errors */
-    --destructive-foreground: 220 17% 98%;
-
-    --border: 240 3.7% 15.9%; /* Based on white/10 over navy */
-    --input: 240 3.7% 15.9%;
-    --ring: 226 100% 55%;
-
-    --radius: 0.75rem;
-  }
- 
-  .dark {
-     /* Re-declaring for dark mode specificity */
-    --background: 236 71% 12%;
-    --foreground: 220 17% 98%;
-    --card: 235 60% 18%;
-    --card-foreground: 220 17% 98%;
-    --popover: 236 71% 12%;
-    --popover-foreground: 220 17% 98%;
-    --primary: 226 100% 55%;
-    --primary-foreground: 220 17% 98%;
-    --secondary: 26 100% 50%;
-    --secondary-foreground: 220 17% 98%;
-    --muted: 223 21% 39%;
-    --muted-foreground: 223 20% 70%;
-    --accent: 205 100% 64%;
-    --accent-foreground: 236 71% 12%;
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 220 17% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 226 100% 55%;
-  }
+@font-face {
+  font-family: "Univia Pro";
+  src:
+    url("/fonts/univia/UniviaPro-Regular.woff2") format("woff2"),
+    url("/fonts/univia/UniviaPro-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  html, body {
-    @apply bg-brand-navy text-brand-white font-body antialiased;
-    color-scheme: dark;
-  }
-
-  .hero-bg {
-    background:
-      radial-gradient(1200px 500px at 80% -10%, rgba(28,68,255,.35), transparent 55%),
-      radial-gradient(700px 400px at 15% 10%, rgba(127,232,255,.20), transparent 65%),
-      linear-gradient(180deg, #0B1130 0%, #121A49 100%);
-  }
+@font-face {
+  font-family: "Univia Pro";
+  src:
+    url("/fonts/univia/UniviaPro-Bold.woff2") format("woff2"),
+    url("/fonts/univia/UniviaPro-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@layer components {
-  /* Píldoras/badges y cards */
-  .card {
-    @apply rounded-xl bg-brand-indigo/50 backdrop-blur-md shadow-brand border border-white/5;
-  }
-  .badge {
-    @apply inline-flex items-center rounded-md px-3 py-1 text-sm bg-white/5 text-brand-gray300;
-  }
-
-  /* Botones */
-  .btn {
-    @apply inline-flex items-center justify-center rounded-lg font-medium px-5 py-3 transition;
-  }
-  .btn-primary {
-    @apply bg-brand-blue600 text-brand-white hover:bg-brand-blue400 shadow-brand;
-  }
-  .btn-secondary {
-    @apply bg-brand-orange text-brand-white hover:brightness-110 shadow-brand;
-  }
-  .btn-ghost {
-    @apply bg-white/10 text-brand-white hover:bg-white/20;
-  }
-
-  /* Enlaces de navbar */
-  .nav-link {
-    @apply text-brand-gray300 hover:text-brand-white transition;
-  }
+:root {
+  color-scheme: dark;
+}
+html, body {
+  @apply bg-brand-midnight text-ink-900 font-univia antialiased;
 }
