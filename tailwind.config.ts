@@ -62,8 +62,8 @@ const config = {
         ...Brand.colors,
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 4px)",
+        lg: Brand.radii.md,
+        md: Brand.radii.sm,
         sm: "calc(var(--radius) - 8px)",
         xl: Brand.radii.xl,
       },

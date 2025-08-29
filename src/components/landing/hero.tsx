@@ -17,11 +17,11 @@ export function Hero() {
             Digitalizamos y automatizamos la operación de vigilancia con IA, trazabilidad y cumplimiento.
           </p>
            <div className="flex flex-col sm:flex-row gap-2 justify-center">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary-700">
                   <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
               </Button>
                <Button asChild size="lg" variant="outline">
-                  <Link href="#solucion">Conoce la solución</Link>
+                  <Link href="/#solucion">Conoce la solución</Link>
               </Button>
           </div>
         </div>

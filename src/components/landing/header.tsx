@@ -69,7 +69,7 @@ export function Header() {
                 window.scrollTo({top: y, behavior: 'smooth'});
             }
         } else {
-             window.location.href = `/${href.substring(1)}`;
+             window.location.href = `/${href}`;
         }
       } else {
         window.location.href = href;
@@ -91,6 +91,9 @@ export function Header() {
             <Button asChild>
                 <Link href="/register">Registrarse</Link>
             </Button>
+             <Button asChild className="bg-accent-500 hover:bg-accent-600">
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
+             </Button>
           </div>
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
@@ -112,13 +115,13 @@ export function Header() {
                     <Button asChild>
                         <Link href="/register">Registrarse</Link>
                     </Button>
+                    <Button asChild className="bg-accent-500 hover:bg-accent-600">
+                        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
+                    </Button>
                  </div>
               </nav>
             </SheetContent>
           </Sheet>
-           <Button asChild className="hidden md:inline-flex" variant="default" >
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
-          </Button>
         </div>
       </div>
     </header>
