@@ -1,11 +1,11 @@
 import { Header } from "@/components/landing/header";
 import { Hero } from "@/components/landing/hero";
 import { ValueProposition } from "@/components/landing/value-proposition";
-import { Profiles } from "@/components/landing/profiles";
 import { TargetAudience } from "@/components/landing/target-audience";
 import { Footer } from "@/components/landing/footer";
 import { ProductFlow } from "@/components/landing/ProductFlow";
 import { ContactSection } from "@/components/landing/ContactSection";
+import RoleShowcase from "@/components/landing/RoleShowcase";
 
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
             <Hero />
             <ProductFlow />
             <ValueProposition />
-            <Profiles />
+            <RoleShowcase />
             <TargetAudience />
             <ContactSection />
         </main>
