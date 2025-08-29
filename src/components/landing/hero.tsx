@@ -14,10 +14,10 @@ export function Hero() {
              La nueva era de la <span className="text-primary">seguridad privada</span> en Colombia
           </h1>
           <p className="max-w-[700px] mx-auto text-text-mid md:text-xl">
-            Digitalizamos y automatizamos la operación de vigilancia con IA, trazabilidad y cumplimiento.
+            Digitalizamos la operación de vigilancia para eliminar fugas por relevos y horas extra, con trazabilidad total y una pre-nómina validada.
           </p>
            <div className="flex flex-col sm:flex-row gap-2 justify-center">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary-700">
+              <Button asChild size="lg" className="bg-accent-500 hover:bg-accent-600">
                   <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
               </Button>
                <Button asChild size="lg" variant="outline">

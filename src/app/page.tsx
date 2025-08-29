@@ -16,8 +16,8 @@ export default function Home() {
         <Header />
         <main className="flex-1">
             <Hero />
-            <ValueProposition />
             <ProductFlow />
+            <ValueProposition />
             <Profiles />
             <TargetAudience />
             <Testimonials />

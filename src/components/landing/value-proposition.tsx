@@ -4,18 +4,18 @@ import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/ca
 const features = [
   {
     icon: <BadgePercent className="h-10 w-10 text-primary" />,
-    title: "Optimización de Recursos",
-    description: "Reducción de costos operativos mediante la asignación inteligente de personal y turnos.",
+    title: "-32% Horas Extra",
+    description: "Reducción de costos por horas extra no justificadas gracias a la optimización de turnos.",
   },
   {
     icon: <GanttChart className="h-10 w-10 text-primary" />,
-    title: "Trazabilidad Total",
-    description: "Visibilidad completa de cada evento, novedad y ronda para una auditoría impecable y en tiempo real.",
+    title: "-27% Ausentismo",
+    description: "Disminución del ausentismo sin cobertura mediante la gestión proactiva de novedades.",
   },
   {
     icon: <Blocks className="h-10 w-10 text-primary" />,
-    title: "Cumplimiento Garantizado",
-    description: "Asegura el cumplimiento normativo (Decreto 356) con registros digitales inmutables y reportes automatizados.",
+    title: "+21% Cumplimiento SLA",
+    description: "Mejora del cumplimiento de los acuerdos de nivel de servicio (SLA) con tus clientes.",
   },
 ];
 
@@ -26,7 +26,7 @@ export function ValueProposition() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-3">
              <div className="inline-block rounded-md bg-primary/10 px-3 py-1 text-sm text-primary font-medium">
-              Nuestra Solución
+              Resultados Tangibles
             </div>
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-text-high">
               Una nueva era para la gestión de la seguridad

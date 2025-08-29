@@ -1,28 +1,21 @@
 
+
 export const Brand = {
   fontFamily: {
     sans: ["Univia Pro", "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Arial"]
   },
   colors: {
     bg: {
-      DEFAULT: "#0A1024", // fondo principal (azul noche)
-      soft:    "#0F1738"
+      DEFAULT: "#0F1738", 
+      soft:    "#0B1220"
     },
     primary: {
-      "50":"#EAF2FF",
-      "100":"#D6E6FF",
-      "200":"#AECBFF",
-      "300":"#85B1FF",
-      "400":"#5D96FF",
-      "500":"#347BFF",
-      "600":"#0F62FE",
-      "700":"#0B4CC4",
-      "800":"#08378F",
-      "900":"#062A6B"
+      "500":"#2D6BFF", // azul
+      "600":"#00C2FF", // cian
     },
     accent:  { 
-      "500":"#FF6A00", 
-      "600":"#FF5C00" 
+      "500":"#FF7A00",  // naranja
+      "600":"#FF6A00" 
     },
     success: { 
       "500":"#1DB954" 
@@ -34,8 +27,8 @@ export const Brand = {
       "500":"#FF3B30" 
     },
     text:    { 
-      high:"#FFFFFF", 
-      mid:"#B7C2D0", 
+      high:"#E6ECFF", 
+      mid:"#A7B3D1", 
       low:"#8791A1" 
     },
     border:  { 

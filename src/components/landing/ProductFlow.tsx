@@ -5,32 +5,32 @@ const flowSteps = [
     {
         icon: <UserCheck className="h-8 w-8 text-primary" />,
         title: "1. Registro del Guardia",
-        description: "Cada guardia es registrado en una base de datos centralizada y confiable, con su documentación completa y validada."
+        description: "Cada perfil, completo y actualizado. Base de datos centralizada y confiable."
     },
     {
         icon: <GanttChartSquare className="h-8 w-8 text-primary" />,
-        title: "2. Programación Inteligente",
-        description: "Optimiza la asignación de turnos y puestos para eliminar fugas de capital por horas extra y relevos no planificados."
-    },
-    {
-        icon: <Bell className="h-8 w-8 text-primary" />,
-        title: "3. Documentación y Alertas",
-        description: "Mantén licencias, cursos y dotación siempre al día con notificaciones automáticas para evitar riesgos por vencimientos."
+        title: "2. Programación",
+        description: "Turnos optimizados y reemplazos urgentes en 1 clic. Control y reducción de pérdidas."
     },
     {
         icon: <FileText className="h-8 w-8 text-primary" />,
-        title: "4. Minuta Digital",
-        description: "Registra todas las novedades del puesto con evidencia multimedia (fotos, GPS) en tiempo real para una trazabilidad total."
+        title: "3. Minuta Digital",
+        description: "Evidencia con GPS en cada evento. Transparencia y control en cada turno."
+    },
+    {
+        icon: <Bell className="h-8 w-8 text-primary" />,
+        title: "4. Novedades y Alertas",
+        description: "Incapacidades, reportes, cursos y licencias al día. Cero riesgos por vencimientos."
     },
     {
         icon: <Bot className="h-8 w-8 text-primary" />,
-        title: "5. Gestión de Novedades",
-        description: "Incapacidades, ausencias y permisos se reportan digitalmente, gestionando relevos por notificación, sin llamadas."
+        title: "5. Relevos Inteligentes",
+        description: "Gestión de novedades y reemplazos por notificación, sin llamadas."
     },
     {
         icon: <FileCheck2 className="h-8 w-8 text-primary" />,
-        title: "6. Prenómina Validada",
-        description: "La plataforma consolida información real y verificada, generando un reporte listo para una dispersión de nómina exacta."
+        title: "6. Pre-nómina Validada",
+        description: "Pagos exactos con datos reales, verificados y auditables, listos para dispersión."
     }
 ];
 
@@ -39,18 +39,14 @@ export function ProductFlow() {
         <Section id="flujo" className="bg-bg-soft">
             <div className="text-center">
                 <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-text-high">
-                    Trazabilidad de principio a fin
+                    Defendra: La seguridad privada ahora es trazable, eficiente y digital
                 </h2>
                 <p className="mt-4 max-w-3xl mx-auto text-text-mid md:text-xl/relaxed">
-                    Defendra garantiza eficiencia y confianza en cada proceso, conectando cada punto de tu operación para eliminar pérdidas y asegurar un servicio documentado.
+                    Defendra garantiza trazabilidad, eficiencia y confianza en cada proceso del sector de vigilancia privada.
                 </p>
             </div>
 
             <div className="relative mt-12">
-                {/* Visual Flow Diagram */}
-                <div className="flex justify-center items-center mb-12">
-                    <Workflow className="w-full max-w-4xl h-auto text-primary/10" strokeWidth={0.5} />
-                </div>
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {flowSteps.map((step) => (
