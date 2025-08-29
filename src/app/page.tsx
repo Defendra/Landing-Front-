@@ -5,6 +5,7 @@ import { Profiles } from "@/components/landing/profiles";
 import { TargetAudience } from "@/components/landing/target-audience";
 import { Footer } from "@/components/landing/footer";
 import { ProductFlow } from "@/components/landing/ProductFlow";
+import { ContactSection } from "@/components/landing/ContactSection";
 
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
             <ValueProposition />
             <Profiles />
             <TargetAudience />
+            <ContactSection />
         </main>
         <Footer />
     </div>

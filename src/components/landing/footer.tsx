@@ -36,8 +36,8 @@ export function Footer() {
              <div className="space-y-2">
                 <h4 className="font-semibold">Contacto</h4>
                  <ul className="space-y-1">
-                    <li><Link href="/contacto" className="text-sm text-text-mid hover:text-primary">Contactar a Ventas</Link></li>
-                    <li><Link href="#" className="text-sm text-text-mid hover:text-primary">Soporte</Link></li>
+                    <li><Link href="/#contacto" className="text-sm text-text-mid hover:text-primary">Contactar a Ventas</Link></li>
+                    <li><Link href="/#contacto" className="text-sm text-text-mid hover:text-primary">Soporte</Link></li>
                 </ul>
             </div>
         </div>

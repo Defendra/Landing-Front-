@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import Link from "next/link";
@@ -16,7 +14,7 @@ const navLinks = [
   { href: "/#solucion", label: "Solución" },
   { href: "/roles", label: "Roles" },
   { href: "/audiencias", label: "Audiencias" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "/#contacto", label: "Contacto" },
 ];
 
 function Logo() {
@@ -53,8 +51,7 @@ function NavMenu({ isMobile = false, onLinkClick }: { isMobile?: boolean, onLink
 export function Header() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = React.useState(false);
-  const { whatsappUrl } = useWhatsAppCTA('Hola, quiero hablar con un asesor de Defendra.');
-
+  
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       e.preventDefault();
       const isHomePage = pathname === '/';
@@ -77,6 +74,8 @@ export function Header() {
       
       if (isSheetOpen) setIsSheetOpen(false);
   };
+  
+  const { whatsappUrl } = useWhatsAppCTA('Hola, quiero hablar con un asesor de Defendra.');
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -87,7 +86,7 @@ export function Header() {
           <div className="hidden md:flex items-center gap-2">
             <AccessMenu />
              <Button asChild className="bg-accent-500 hover:bg-accent-600">
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
+                <a href="#contacto" onClick={(e) => handleLinkClick(e, '/#contacto')}>Habla con nosotros</a>
              </Button>
           </div>
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
@@ -106,7 +105,7 @@ export function Header() {
                  <div className="flex flex-col gap-4 mt-4">
                     <AccessMenu />
                     <Button asChild className="bg-accent-500 hover:bg-accent-600">
-                        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
+                        <a href="#contacto" onClick={(e) => handleLinkClick(e, '/#contacto')}>Habla con nosotros</a>
                     </Button>
                  </div>
               </nav>
