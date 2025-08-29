@@ -1,5 +1,5 @@
 import { FileText, GanttChartSquare, Bell, UserCheck, Bot, FileCheck2, Workflow } from "lucide-react";
-import { Section } from "./Section";
+import { Section } from "@/components/landing/Section";
 
 const flowSteps = [
     {
