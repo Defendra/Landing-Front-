@@ -7,6 +7,7 @@ import { Testimonials } from "@/components/landing/testimonials";
 import { BlogPanel } from '@/components/landing/blog';
 import { Footer } from "@/components/landing/footer";
 import { mockPosts } from "./blog/blog-data";
+import { ProductFlow } from "@/components/landing/ProductFlow";
 
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <main className="flex-1">
             <Hero />
             <ValueProposition />
+            <ProductFlow />
             <Profiles />
             <TargetAudience />
             <Testimonials />
