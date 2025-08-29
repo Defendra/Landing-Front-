@@ -3,10 +3,7 @@ import { Hero } from "@/components/landing/hero";
 import { ValueProposition } from "@/components/landing/value-proposition";
 import { Profiles } from "@/components/landing/profiles";
 import { TargetAudience } from "@/components/landing/target-audience";
-import { Testimonials } from "@/components/landing/testimonials";
-import { BlogPanel } from '@/components/landing/blog';
 import { Footer } from "@/components/landing/footer";
-import { mockPosts } from "./blog/blog-data";
 import { ProductFlow } from "@/components/landing/ProductFlow";
 
 
@@ -20,8 +17,6 @@ export default function Home() {
             <ValueProposition />
             <Profiles />
             <TargetAudience />
-            <Testimonials />
-            <BlogPanel posts={mockPosts} />
         </main>
         <Footer />
     </div>
