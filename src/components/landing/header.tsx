@@ -15,7 +15,7 @@ import AccessMenu from "./AccessMenu";
 const navLinks = [
   { href: "/#solucion", label: "Solución" },
   { href: "/roles", label: "Roles" },
-  { href: "/audiencias", label: "Audiencias" },
+  { href: "/#audiencias", label: "Audiencias" },
   { href: "/clientes", label: "Clientes" },
   { href: "/blog", label: "Recursos" },
   { href: "/contacto", label: "Contacto" },
@@ -71,7 +71,7 @@ export function Header() {
                 window.scrollTo({top: y, behavior: 'smooth'});
             }
         } else {
-             window.location.href = `/${href.substring(1)}`;
+             window.location.href = `/${href}`;
         }
       } else {
         window.location.href = href;
