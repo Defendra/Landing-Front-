@@ -15,7 +15,7 @@ import AccessMenu from "./AccessMenu";
 const navLinks = [
   { href: "/#solucion", label: "Solución" },
   { href: "/roles", label: "Roles" },
-  { href: "/#audiencias", label: "Audiencias" },
+  { href: "/audiencias", label: "Audiencias" },
   { href: "/clientes", label: "Clientes" },
   { href: "/blog", label: "Recursos" },
   { href: "/contacto", label: "Contacto" },
@@ -62,7 +62,7 @@ export function Header() {
       const isHomePage = pathname === '/';
       
       if (href.startsWith('/#')) {
-        const targetId = href.substring(href.indexOf('#') + 1);
+        const targetId = href.substring(2);
         if (isHomePage) {
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
@@ -71,7 +71,7 @@ export function Header() {
                 window.scrollTo({top: y, behavior: 'smooth'});
             }
         } else {
-             window.location.href = `/${href}`;
+             window.location.href = `/#${targetId}`;
         }
       } else {
         window.location.href = href;
