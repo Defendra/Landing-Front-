@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { Brand } from "./src/design/brand";
 
 const config = {
   darkMode: ["class"],
@@ -19,20 +20,19 @@ const config = {
     },
     extend: {
        fontFamily: {
-        sans: ['"Univia Pro"', "Inter", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
-        headline: ['"Univia Pro"', "Inter", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
+        sans: Brand.fontFamily.sans,
+        headline: Brand.fontFamily.sans,
       },
       colors: {
+        ...Brand.colors,
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        brand: {
-            accent: "hsl(var(--brand-accent))"
-        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
+          ...Brand.colors.primary,
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -49,6 +49,7 @@ const config = {
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
+          ...Brand.colors.accent,
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
@@ -61,9 +62,13 @@ const config = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 4px)",
-        sm: "calc(var(--radius) - 8px)",
+        lg: Brand.radii.lg,
+        md: Brand.radii.md,
+        sm: Brand.radii.sm,
+        xl: Brand.radii.xl,
+      },
+      boxShadow: {
+        card: Brand.shadows.card,
       },
       keyframes: {
         "accordion-down": {

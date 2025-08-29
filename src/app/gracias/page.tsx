@@ -15,12 +15,12 @@ export default function GraciasPage() {
       <main className="flex-1 hero-gradient">
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container flex flex-col items-center justify-center gap-4 text-center">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-brand-accent">¡Gracias por tu interés!</h1>
-            <p className="max-w-[600px] text-muted-foreground md:text-xl">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary-500">¡Gracias por tu interés!</h1>
+            <p className="max-w-[600px] text-text-mid md:text-xl">
               Hemos recibido tu solicitud. Un especialista de nuestro equipo se pondrá en contacto contigo muy pronto.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button asChild size="lg" className="bg-brand-accent hover:bg-brand-accent/90">
+              <Button asChild size="lg" variant="default">
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   Hablar por WhatsApp
                 </a>

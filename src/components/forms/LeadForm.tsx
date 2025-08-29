@@ -65,7 +65,7 @@ export function LeadForm() {
   }
 
   return (
-    <Card className="w-full max-w-lg mx-auto shadow-lg bg-card border-border/50">
+    <Card className="w-full max-w-lg mx-auto shadow-card">
       <CardHeader>
         <CardTitle>Solicita una Demo</CardTitle>
         <CardDescription>Completa el formulario y un especialista te contactará.</CardDescription>
@@ -122,7 +122,7 @@ export function LeadForm() {
                 <FormMessage />
               </FormItem>
             )} />
-            <Button type="submit" className="w-full bg-brand-accent hover:bg-brand-accent/90 text-primary-foreground" disabled={form.formState.isSubmitting}>
+            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
               {form.formState.isSubmitting ? 'Enviando...' : 'Enviar Solicitud'}
             </Button>
           </form>

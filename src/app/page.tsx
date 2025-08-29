@@ -4,7 +4,7 @@ import { ValueProposition } from "@/components/landing/value-proposition";
 import { Profiles } from "@/components/landing/profiles";
 import { TargetAudience } from "@/components/landing/target-audience";
 import { Testimonials } from "@/components/landing/testimonials";
-import { BlogPanel, BlogPost } from '@/components/landing/blog';
+import { BlogPanel } from '@/components/landing/blog';
 import { Footer } from "@/components/landing/footer";
 import { mockPosts } from "./blog/blog-data";
 

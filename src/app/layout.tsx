@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/toaster";
+import { Brand } from "@/design/brand";
 
 export const metadata: Metadata = {
   title: "Defendra — Seguridad privada con IA",
@@ -9,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
-      <body className="min-h-dvh bg-background font-sans antialiased">
+    <html lang="es" className="dark">
+      <body className={`min-h-dvh bg-bg-DEFAULT font-sans antialiased`}>
         {children}
         <Toaster />
       </body>

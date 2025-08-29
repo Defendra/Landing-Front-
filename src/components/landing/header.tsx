@@ -7,23 +7,23 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { cn } from "@/lib/utils";
 import { useWhatsAppCTA } from "@/hooks/useWhatsAppCTA";
 
 
 const navLinks = [
   { href: "/#solucion", label: "Solución" },
-  { href: "/#roles", label: "Roles" },
-  { href: "/#audiences", label: "Audiencias" },
-  { href: "/#testimonios", label: "Clientes" },
+  { href: "/roles", label: "Roles" },
+  { href: "/audiencias", label: "Audiencias" },
+  { href: "/clientes", label: "Clientes" },
   { href: "/blog", label: "Recursos" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2" prefetch={false}>
-      <Shield className="h-7 w-7 text-brand-accent" />
-      <span className="font-headline text-2xl font-bold text-foreground">Defendra</span>
+      <Shield className="h-7 w-7 text-primary" />
+      <span className="font-headline text-2xl font-bold text-text-high">Defendra</span>
     </Link>
   );
 }
@@ -41,7 +41,7 @@ function NavMenu({ isMobile = false, onLinkClick }: { isMobile?: boolean, onLink
           key={link.href}
           href={link.href}
           onClick={(e) => onLinkClick(e, link.href)}
-          className="transition-colors hover:text-brand-accent text-muted-foreground cursor-pointer"
+          className="transition-colors hover:text-primary text-text-mid cursor-pointer"
         >
           {link.label}
         </a>
@@ -58,7 +58,7 @@ export function Header() {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    if (href.startsWith('/blog')) {
+    if (href.startsWith('/blog') || href.startsWith('/contacto') || href.startsWith('/roles') || href.startsWith('/audiencias') || href.startsWith('/clientes')) {
       window.location.href = href;
       return;
     }
@@ -74,7 +74,6 @@ export function Header() {
         }
     }
     else {
-      // If we are not on the home page, navigate to home with the hash
       window.location.href = `/${href.startsWith('/#') ? href.substring(1) : href}`;
     }
     
@@ -87,6 +86,14 @@ export function Header() {
         <Logo />
         <div className="flex items-center gap-4">
           <NavMenu onLinkClick={handleLinkClick} />
+          <div className="hidden md:flex items-center gap-2">
+            <Button variant="ghost" size="sm" asChild>
+                <Link href="/login">Iniciar sesión</Link>
+            </Button>
+            <Button variant="outline" size="sm" asChild>
+                <Link href="/register">Registrarse</Link>
+            </Button>
+          </div>
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden shrink-0">
@@ -100,10 +107,18 @@ export function Header() {
                   <Logo />
                 </div>
                  <NavMenu isMobile={true} onLinkClick={handleLinkClick} />
+                 <div className="flex flex-col gap-4 mt-4">
+                    <Button variant="ghost" asChild>
+                        <Link href="/login">Iniciar sesión</Link>
+                    </Button>
+                    <Button asChild>
+                        <Link href="/register">Registrarse</Link>
+                    </Button>
+                 </div>
               </nav>
             </SheetContent>
           </Sheet>
-          <Button asChild className="bg-brand-accent hover:bg-brand-accent/90">
+           <Button asChild className="hidden md:inline-flex" variant="default" >
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
           </Button>
         </div>

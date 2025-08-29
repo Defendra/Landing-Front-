@@ -15,18 +15,18 @@ export default function ContactPage() {
                     <div className="container px-4 md:px-6">
                         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
                             <div className="space-y-4">
-                                <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                                <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-text-high">
                                 Hablemos
                                 </h2>
-                                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                <p className="max-w-[600px] text-text-mid md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                 ¿Listo para transformar la seguridad de tu empresa? Contáctanos para una demostración personalizada o háblanos directamente por WhatsApp.
                                 </p>
-                                <div className="space-y-2 text-foreground">
+                                <div className="space-y-2 text-text-high">
                                     <p><strong>Email:</strong> contacto@defendra.co</p>
                                     <p><strong>Teléfono:</strong> +57 310 7996793</p>
                                     <p><strong>Ubicación:</strong> Bogotá, Colombia</p>
                                 </div>
-                                <Button asChild size="lg" className="bg-brand-accent hover:bg-brand-accent/90">
+                                <Button asChild size="lg">
                                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                                     Hablar con un asesor por WhatsApp
                                 </a>
