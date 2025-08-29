@@ -4,33 +4,33 @@ import { Section } from "@/components/landing/Section";
 const flowSteps = [
     {
         icon: <UserCheck className="h-8 w-8 text-primary" />,
-        title: "1. Registro y Validación",
-        description: "Cada guardia es registrado en la plataforma con su documentación completa, que es validada para asegurar cumplimiento."
+        title: "1. Registro del Guardia",
+        description: "Cada guardia es registrado en una base de datos centralizada y confiable, con su documentación completa y validada."
     },
     {
         icon: <GanttChartSquare className="h-8 w-8 text-primary" />,
         title: "2. Programación Inteligente",
-        description: "Los operadores asignan turnos y puestos de forma centralizada. El sistema detecta vacíos y sugiere optimizaciones."
+        description: "Optimiza la asignación de turnos y puestos para eliminar fugas de capital por horas extra y relevos no planificados."
     },
     {
         icon: <Bell className="h-8 w-8 text-primary" />,
-        title: "3. Alertas y Documentación",
-        description: "El sistema notifica automáticamente sobre vencimientos de cursos, dotación o permisos de armamento."
-    },
-    {
-        icon: <Bot className="h-8 w-8 text-primary" />,
-        title: "4. Relevos y Novedades",
-        description: "Las incapacidades o ausencias se gestionan con un sistema de relevos por notificación, sin llamadas."
+        title: "3. Documentación y Alertas",
+        description: "Mantén licencias, cursos y dotación siempre al día con notificaciones automáticas para evitar riesgos por vencimientos."
     },
     {
         icon: <FileText className="h-8 w-8 text-primary" />,
-        title: "5. Minuta Digital",
-        description: "Los guardias registran todas las novedades del puesto con evidencia digital (fotos, texto, GPS) en tiempo real."
+        title: "4. Minuta Digital",
+        description: "Registra todas las novedades del puesto con evidencia multimedia (fotos, GPS) en tiempo real para una trazabilidad total."
+    },
+    {
+        icon: <Bot className="h-8 w-8 text-primary" />,
+        title: "5. Gestión de Novedades",
+        description: "Incapacidades, ausencias y permisos se reportan digitalmente, gestionando relevos por notificación, sin llamadas."
     },
     {
         icon: <FileCheck2 className="h-8 w-8 text-primary" />,
-        title: "6. Pre-nómina Validada",
-        description: "La plataforma consolida todas las horas trabajadas, extras y novedades en un reporte listo para ser validado y dispersado."
+        title: "6. Prenómina Validada",
+        description: "La plataforma consolida información real y verificada, generando un reporte listo para una dispersión de nómina exacta."
     }
 ];
 
@@ -42,7 +42,7 @@ export function ProductFlow() {
                     Trazabilidad de principio a fin
                 </h2>
                 <p className="mt-4 max-w-3xl mx-auto text-text-mid md:text-xl/relaxed">
-                    Así es como Defendra conecta cada punto de tu operación, eliminando pérdidas y garantizando un servicio confiable y documentado.
+                    Defendra garantiza eficiencia y confianza en cada proceso, conectando cada punto de tu operación para eliminar pérdidas y asegurar un servicio documentado.
                 </p>
             </div>
 
