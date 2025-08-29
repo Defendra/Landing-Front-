@@ -4,29 +4,6 @@
 
 @layer base {
   :root {
-    --background: 15 20% 96.1%;
-    --foreground: 15 20% 3.9%;
-    --card: 15 20% 96.1%;
-    --card-foreground: 15 20% 3.9%;
-    --popover: 15 20% 96.1%;
-    --popover-foreground: 15 20% 3.9%;
-    --primary: 15 90.1% 47.1%;
-    --primary-foreground: 15 60% 98%;
-    --secondary: 15 14.3% 95.9%;
-    --secondary-foreground: 15 20% 3.9%;
-    --muted: 15 14.3% 95.9%;
-    --muted-foreground: 15 20% 45.1%;
-    --accent: 15 14.3% 95.9%;
-    --accent-foreground: 15 20% 3.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 15 60% 98%;
-    --border: 15 20% 89%;
-    --input: 15 20% 89%;
-    --ring: 15 90.1% 47.1%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
     --background: 225 18% 6%; /* bg-DEFAULT from brand tokens */
     --foreground: 220 18% 87%; /* text-high from brand tokens */
     --card: 224 24% 12%; /* surface-card from brand tokens */
@@ -39,7 +16,7 @@
     --secondary-foreground: 220 18% 87%;
     --muted: 222 17% 17%;
     --muted-foreground: 220 12% 57%; /* text-low from brand tokens */
-    --accent: 222 17% 17%;
+    --accent: 25 100% 50%;
     --accent-foreground: 220 18% 87%;
     --destructive: 2 82% 59%; /* danger-500 from brand tokens */
     --destructive-foreground: 220 18% 87%;
@@ -52,7 +29,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-[hsl(var(--border))];
   }
   body {
     @apply bg-background text-foreground;

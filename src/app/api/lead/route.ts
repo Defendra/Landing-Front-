@@ -1,3 +1,5 @@
+'use server';
+
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 // Firestore related imports will be added when Firebase is configured.

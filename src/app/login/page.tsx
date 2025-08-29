@@ -1,4 +1,5 @@
 
+
 import { Footer } from "@/components/landing/footer";
 import { Header } from "@/components/landing/header";
 import { Button } from "@/components/ui/button";
@@ -57,22 +58,22 @@ export default function LoginPage() {
                 </ProfileSelectionCard>
                 
                 <ProfileSelectionCard
-                    icon={<User className="w-12 h-12 text-accent-500" />}
+                    icon={<User className="w-12 h-12" />}
                     title="Soy Guardia"
                     description="Consulta turnos, reporta novedades y más."
                     className="border-accent-500/30"
                 >
                     <p className="text-text-mid text-sm mb-6">Regístrate fácilmente con verificación de identidad y carga de documentos.</p>
                     <ul className="space-y-3 text-left text-text-mid text-sm self-start">
-                        <li className="flex items-center gap-3"><Camera className="w-5 h-5 text-accent-500" /> Selfie biométrica + documento</li>
-                        <li className="flex items-center gap-3"><FileText className="w-5 h-5 text-accent-500" /> Datos de contacto y bancarios</li>
-                        <li className="flex items-center gap-3"><BookUser className="w-5 h-5 text-accent-500" /> Cursos/licencias y soportes</li>
+                        <li className="flex items-center gap-3"><Camera className="w-5 h-5 text-accent" /> Selfie biométrica + documento</li>
+                        <li className="flex items-center gap-3"><FileText className="w-5 h-5 text-accent" /> Datos de contacto y bancarios</li>
+                        <li className="flex items-center gap-3"><BookUser className="w-5 h-5 text-accent" /> Cursos/licencias y soportes</li>
                     </ul>
                      <div className="flex flex-col sm:flex-row gap-4 w-full mt-8">
                         <Button asChild size="lg" className="w-full" variant="outline">
                            <Link href="/guard/login">Ya tengo cuenta</Link>
                         </Button>
-                        <Button asChild size="lg" className="w-full" variant="default" style={{backgroundColor: "hsl(var(--accent))"}}>
+                        <Button asChild size="lg" className="w-full" variant="default" style={{backgroundColor: "hsl(var(--accent-500))", color: "hsl(var(--primary-foreground))"}}>
                              <Link href="/guard/register">Iniciar Registro</Link>
                         </Button>
                     </div>

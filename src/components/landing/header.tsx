@@ -56,28 +56,26 @@ export function Header() {
   const { whatsappUrl } = useWhatsAppCTA('Hola, quiero hablar con un asesor de Defendra.');
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    
-    if (href.startsWith('/blog') || href.startsWith('/contacto') || href.startsWith('/roles') || href.startsWith('/audiencias') || href.startsWith('/clientes')) {
-      window.location.href = href;
-      return;
-    }
-
-    const targetId = href.substring(href.indexOf('#') + 1);
-    
-    if (pathname === '/') {
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            const yOffset = -80; 
-            const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({top: y, behavior: 'smooth'});
+      e.preventDefault();
+      const isHomePage = pathname === '/';
+      
+      if (href.startsWith('/#')) {
+        const targetId = href.substring(href.indexOf('#') + 1);
+        if (isHomePage) {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                const yOffset = -80; 
+                const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
+        } else {
+             window.location.href = `/${href.substring(1)}`;
         }
-    }
-    else {
-      window.location.href = `/${href.startsWith('/#') ? href.substring(1) : href}`;
-    }
-    
-    if (isSheetOpen) setIsSheetOpen(false);
+      } else {
+        window.location.href = href;
+      }
+      
+      if (isSheetOpen) setIsSheetOpen(false);
   };
 
   return (
@@ -90,7 +88,7 @@ export function Header() {
             <Button variant="ghost" size="sm" asChild>
                 <Link href="/login">Iniciar sesión</Link>
             </Button>
-            <Button variant="outline" size="sm" asChild>
+            <Button asChild>
                 <Link href="/register">Registrarse</Link>
             </Button>
           </div>

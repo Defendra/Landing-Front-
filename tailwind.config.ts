@@ -24,7 +24,6 @@ const config = {
         headline: Brand.fontFamily.sans,
       },
       colors: {
-        ...Brand.colors,
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -60,11 +59,12 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        ...Brand.colors,
       },
       borderRadius: {
-        lg: Brand.radii.lg,
-        md: Brand.radii.md,
-        sm: Brand.radii.sm,
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
         xl: Brand.radii.xl,
       },
       boxShadow: {
