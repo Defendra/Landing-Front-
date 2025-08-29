@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { useWhatsAppCTA } from "@/hooks/useWhatsAppCTA";
+import AccessMenu from "./AccessMenu";
 
 
 const navLinks = [
@@ -85,12 +86,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <NavMenu onLinkClick={handleLinkClick} />
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="ghost" size="sm" asChild>
-                <Link href="/login">Iniciar sesión</Link>
-            </Button>
-            <Button asChild>
-                <Link href="/register">Registrarse</Link>
-            </Button>
+            <AccessMenu />
              <Button asChild className="bg-accent-500 hover:bg-accent-600">
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
              </Button>
@@ -109,12 +105,7 @@ export function Header() {
                 </div>
                  <NavMenu isMobile={true} onLinkClick={handleLinkClick} />
                  <div className="flex flex-col gap-4 mt-4">
-                    <Button variant="ghost" asChild>
-                        <Link href="/login">Iniciar sesión</Link>
-                    </Button>
-                    <Button asChild>
-                        <Link href="/register">Registrarse</Link>
-                    </Button>
+                    <AccessMenu />
                     <Button asChild className="bg-accent-500 hover:bg-accent-600">
                         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
                     </Button>
