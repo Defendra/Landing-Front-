@@ -75,32 +75,10 @@ export default function ProductFlow() {
             <StepCard
               key={step.id}
               step={step}
-              isFirst={idx === 0}
-              isLast={idx === STEPS.length - 1}
               index={idx}
             />
           ))}
         </ol>
-
-        {/* CTA final */}
-        <div className="mt-10 flex flex-wrap items-center gap-3">
-          <Link
-            href="#demo-recorrido"
-            className="inline-flex items-center gap-2 rounded-xl bg-secondary px-4 py-2 text-sm font-medium text-text-high ring-1 ring-border/70 transition hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            aria-label="Ver recorrido completo"
-          >
-            Ver recorrido completo
-            <ArrowRight className="size-4" />
-          </Link>
-
-          <Link
-            href="#contacto"
-            className="inline-flex items-center gap-2 rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label="Habla con nosotros"
-          >
-            Habla con nosotros
-          </Link>
-        </div>
       </div>
     </section>
   );
@@ -111,8 +89,6 @@ function StepCard({
   index,
 }: {
   step: Step;
-  isFirst: boolean;
-  isLast: boolean;
   index: number;
 }) {
   const Icon = step.icon;
