@@ -66,7 +66,7 @@ export function Header() {
                 window.scrollTo({top: y, behavior: 'smooth'});
             }
         } else {
-             window.location.href = `/${href}`;
+             window.location.href = `/#${targetId}`;
         }
       } else {
         window.location.href = href;
