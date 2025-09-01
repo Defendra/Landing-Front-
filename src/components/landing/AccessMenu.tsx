@@ -56,7 +56,7 @@ export default function AccessMenu() {
             Iniciar sesión
           </Link>
           <Link
-            href="/register"
+            href="/login"
             role="menuitem"
             className="block px-4 py-3 text-sm text-text-mid hover:bg-white/5 hover:text-text-high transition-colors"
             onClick={() => setOpen(false)}
