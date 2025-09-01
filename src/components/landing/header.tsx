@@ -14,7 +14,6 @@ const navLinks = [
   { href: "/#solucion", label: "Solución" },
   { href: "/roles", label: "Roles" },
   { href: "/audiencias", label: "Audiencias" },
-  { href: "/#contacto", label: "Contacto" },
 ];
 
 function Logo() {
@@ -86,7 +85,7 @@ export function Header() {
           <div className="hidden md:flex items-center gap-2">
             <AccessMenu />
              <Button asChild className="bg-accent-500 hover:bg-accent-600">
-                <a href="#contacto" onClick={(e) => handleLinkClick(e, '/#contacto')}>Habla con nosotros</a>
+                <a href="/#contacto" onClick={(e) => handleLinkClick(e, '/#contacto')}>Habla con nosotros</a>
              </Button>
           </div>
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
@@ -105,7 +104,7 @@ export function Header() {
                  <div className="flex flex-col gap-4 mt-4">
                     <AccessMenu />
                     <Button asChild className="bg-accent-500 hover:bg-accent-600">
-                        <a href="#contacto" onClick={(e) => handleLinkClick(e, '/#contacto')}>Habla con nosotros</a>
+                        <a href="/#contacto" onClick={(e) => handleLinkClick(e, '/#contacto')}>Habla con nosotros</a>
                     </Button>
                  </div>
               </nav>
