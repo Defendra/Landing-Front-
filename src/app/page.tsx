@@ -6,6 +6,8 @@ import { Footer } from "@/components/landing/footer";
 import { ProductFlow } from "@/components/landing/ProductFlow";
 import { ContactSection } from "@/components/landing/ContactSection";
 import RoleShowcase from "@/components/landing/RoleShowcase";
+import StepsTimeline from "@/components/landing/StepsTimeline";
+import KPIChart from "@/components/landing/KPIChart";
 
 
 export default function Home() {
@@ -14,10 +16,12 @@ export default function Home() {
         <Header />
         <main className="flex-1">
             <Hero />
-            <ProductFlow />
             <ValueProposition />
+            <StepsTimeline />
+            <KPIChart />
             <RoleShowcase />
             <TargetAudience />
+            <ProductFlow />
             <ContactSection />
         </main>
         <Footer />

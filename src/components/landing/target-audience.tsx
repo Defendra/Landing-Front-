@@ -6,19 +6,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Check, ShieldCheck } from "lucide-react";
 import { Section } from "./Section";
-
-const licencias = [
-  { name: "Vigilancia fija" },
-  { name: "Vigilancia móvil" },
-  { name: "Escoltas" },
-  { name: "Transporte de valores" },
-  { name: "Empresas blindadoras" },
-  { name: "Escuelas de capacitación" },
-  { name: "Departamentos de seguridad" },
-  { name: "Fabricación de equipos" },
-  { name: "Importación de equipos" },
-  { name: "Comercialización de equipos" },
-]
+import LicensesGrid from "./LicensesGrid";
 
 export function TargetAudience() {
     return (
@@ -36,14 +24,7 @@ export function TargetAudience() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 max-w-5xl mx-auto">
-                    {licencias.map((lic) => (
-                        <Card key={lic.name} className="bg-background/50 text-center p-4 flex flex-col items-center justify-center">
-                            <ShieldCheck className="h-8 w-8 text-primary mb-2"/>
-                            <p className="text-sm font-medium text-text-high">{lic.name}</p>
-                        </Card>
-                    ))}
-                </div>
+                <LicensesGrid />
 
                 <div className="text-center mt-12 max-w-3xl mx-auto">
                      <p className="text-text-mid text-lg">
