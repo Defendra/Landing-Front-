@@ -3,7 +3,6 @@ import { Hero } from "@/components/landing/hero";
 import { ValueProposition } from "@/components/landing/value-proposition";
 import { TargetAudience } from "@/components/landing/target-audience";
 import { Footer } from "@/components/landing/footer";
-import { ProductFlow } from "@/components/landing/ProductFlow";
 import { ContactSection } from "@/components/landing/ContactSection";
 import RoleShowcase from "@/components/landing/RoleShowcase";
 import StepsTimeline from "@/components/landing/StepsTimeline";
@@ -21,7 +20,6 @@ export default function Home() {
             <KPIChart />
             <RoleShowcase />
             <TargetAudience />
-            <ProductFlow />
             <ContactSection />
         </main>
         <Footer />
