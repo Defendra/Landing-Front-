@@ -73,7 +73,7 @@ export default function LoginPage() {
                         <Button asChild size="lg" className="w-full" variant="outline">
                            <Link href="/guard/login">Ya tengo cuenta</Link>
                         </Button>
-                        <Button asChild size="lg" className="w-full" variant="default" style={{backgroundColor: "hsl(var(--accent-500))", color: "hsl(var(--primary-foreground))"}}>
+                        <Button asChild size="lg" className="w-full" variant="default" style={{backgroundColor: "hsl(var(--accent))", color: "hsl(var(--primary-foreground))"}}>
                              <Link href="/guard/register">Iniciar Registro</Link>
                         </Button>
                     </div>
