@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Shield } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { useWhatsAppCTA } from "@/hooks/useWhatsAppCTA";
 import AccessMenu from "./AccessMenu";
+import Image from "next/image";
 
 
 const navLinks = [
@@ -18,9 +19,14 @@ const navLinks = [
 
 function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2" prefetch={false}>
-      <Shield className="h-7 w-7 text-primary" />
-      <span className="font-headline text-2xl font-bold text-text-high">Defendra</span>
+    <Link href="/" className="flex items-center" prefetch={false}>
+      <Image 
+        src="/logos/defendra-logo-header.svg" 
+        alt="Defendra" 
+        width={120} 
+        height={32}
+        className="h-8 w-auto"
+      />
     </Link>
   );
 }
