@@ -16,7 +16,8 @@ export function Hero() {
               text={[
                 "La nueva era de la seguridad privada en Colombia",
                 "Digitalizamos tu operación de vigilancia",
-                "Elimina fugas por relevos y horas extra"
+                "Elimina fugas por relevos y horas extra",
+                "Monitorea cada una de tus operaciones de seguridad"
               ]}
               typingSpeed={75}
               pauseDuration={2000}
