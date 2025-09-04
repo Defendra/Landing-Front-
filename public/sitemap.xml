@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://defendra.co/</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Blog main page -->
+  <url>
+    <loc>https://defendra.co/blog/</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog posts -->
+  <url>
+    <loc>https://defendra.co/blog/que-es-la-supervigilancia</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://defendra.co/blog/decreto-356-modalidades</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://defendra.co/blog/programacion-con-ia</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://defendra.co/blog/minuta-digital-vs-papel</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://defendra.co/blog/5-kpis-operativos</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://defendra.co/blog/ocr-en-ficha-tecnica</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://defendra.co/blog/checklist-cumplimiento-licencias</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Profiles page -->
+  <url>
+    <loc>https://defendra.co/perfiles/</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Legal pages -->
+  <url>
+    <loc>https://defendra.co/terminos</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://defendra.co/privacidad</loc>
+    <lastmod>2024-12-20T12:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

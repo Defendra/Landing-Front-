@@ -12,29 +12,29 @@ export function Hero() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/tight text-text-high">
-             <TextType 
-               text={[
-                 "La nueva era de la seguridad privada en Colombia",
-                 "Digitalizamos tu operación de vigilancia",
-                 "Elimina fugas por relevos y horas extra"
-               ]}
-               typingSpeed={75}
-               pauseDuration={2000}
-               showCursor={true}
-               cursorCharacter="|"
-               className="text-primary"
-             />
+            <TextType
+              text={[
+                "La nueva era de la seguridad privada en Colombia",
+                "Digitalizamos tu operación de vigilancia",
+                "Elimina fugas por relevos y horas extra"
+              ]}
+              typingSpeed={75}
+              pauseDuration={2000}
+              showCursor={true}
+              cursorCharacter="|"
+              className="text-primary"
+            />
           </h1>
           <p className="max-w-[700px] mx-auto text-text-mid md:text-xl">
             Digitalizamos la operación de vigilancia para eliminar fugas por relevos y horas extra, con trazabilidad total y una pre-nómina validada.
           </p>
-           <div className="flex flex-col sm:flex-row gap-2 justify-center">
-              <Button asChild size="lg" className="bg-accent-500 hover:bg-accent-600">
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
-              </Button>
-               <Button asChild size="lg" variant="outline">
-                  <Link href="/#solucion">Conoce la solución</Link>
-              </Button>
+          <div className="flex flex-col sm:flex-row gap-2 justify-center">
+            <Button asChild size="lg" className="bg-accent-500 hover:bg-accent-600">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Habla con nosotros</a>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/#solucion">Conoce la solución</Link>
+            </Button>
           </div>
         </div>
       </div>
