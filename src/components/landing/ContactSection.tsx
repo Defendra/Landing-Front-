@@ -3,12 +3,39 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { Brand } from "../../design/brand";
 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [captcha, setCaptcha] = useState({ question: "", answer: 0, userAnswer: "" });
+
+  // Generar captcha simple
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    setCaptcha({
+      question: `¿Cuánto es ${num1} + ${num2}?`,
+      answer: num1 + num2,
+      userAnswer: ""
+    });
+  };
+
+  // Generar captcha al montar el componente
+  useState(() => {
+    generateCaptcha();
+  });
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    
+    // Validar captcha
+    if (parseInt(captcha.userAnswer) !== captcha.answer) {
+      alert("Por favor, responde correctamente la pregunta de seguridad.");
+      return;
+    }
+
+    setIsLoading(true);
     
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -35,6 +62,8 @@ export function ContactSection() {
       }
     } catch (error) {
       console.error("Error enviando formulario:", error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -66,12 +95,54 @@ export function ContactSection() {
                 <Input required type="email" name="email" placeholder="Email" className="input sm:col-span-2" />
                 <Input required name="phone" placeholder="Teléfono" className="input sm:col-span-2" />
                 <Textarea name="message" placeholder="Cuéntanos brevemente" className="input sm:col-span-2 h-28" />
+                
+                {/* Captcha */}
+                <div className="sm:col-span-2 flex items-center gap-3 p-3 rounded-lg border border-white/10 bg-white/5">
+                  <span className="text-text-mid text-sm">{captcha.question}</span>
+                  <Input
+                    type="number"
+                    value={captcha.userAnswer}
+                    onChange={(e) => setCaptcha({...captcha, userAnswer: e.target.value})}
+                    className="w-20"
+                    placeholder="?"
+                    required
+                  />
+                  <Button 
+                    type="button" 
+                    onClick={generateCaptcha}
+                    variant="ghost"
+                    size="sm"
+                    className="text-xs"
+                  >
+                    🔄
+                  </Button>
                 </div>
-                <Button type="submit" className="mt-4" variant="default">
-                {sent ? "¡Enviado!" : "Enviar"}
-                </Button>
-                <p className="mt-2 text-xs text-muted-foreground">
-                También recibiremos un correo en <b>defendraco@gmail.com</b>.
+                </div>
+                
+                <div className="flex justify-end mt-4">
+                  <Button 
+                    type="submit" 
+                    disabled={isLoading || sent}
+                    className={`min-w-32 transition-colors duration-200 ${
+                      sent 
+                        ? 'bg-[#1DB954] hover:bg-[#1DB954]' 
+                        : 'bg-[#FF7A00] hover:bg-[#FF6A00]'
+                    }`}
+                  >
+                    {isLoading ? (
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        Enviando...
+                      </div>
+                    ) : sent ? (
+                      "¡Enviado!"
+                    ) : (
+                      "Enviar"
+                    )}
+                  </Button>
+                </div>
+                <p className="mt-2 text-xs text-text-mid">
+                  O puedes escribirnos directamente a <a href="mailto:info@defendra.app" className="font-bold hover:text-[#FF7A00] transition-colors">info@defendra.app</a>
                 </p>
             </form>
             </div>
