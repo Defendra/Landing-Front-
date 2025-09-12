@@ -9,12 +9,33 @@ export function ContactSection() {
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
-    // NOTE: In a real app, you'd handle form submission here,
-    // e.g., by sending data to a serverless function or API endpoint.
-    // The following is a simulation.
-    console.log("Form submitted");
-    // await fetch("/api/lead", { method: "POST", body: new FormData(e.currentTarget) });
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      company: formData.get("company") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      tell_us: formData.get("message") as string,
+    };
+
+    try {
+      const response = await fetch("https://api-deploy.defendra.app/api/landing-contact-email/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSent(true);
+      } else {
+        console.error("Error enviando formulario:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error enviando formulario:", error);
+    }
   }
 
   const waLink = "https://wa.me/573107996793?text=Hola%20Defendra%2C%20quiero%20saber%20m%C3%A1s%20sobre%20la%20plataforma.";
