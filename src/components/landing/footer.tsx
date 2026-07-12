@@ -19,16 +19,16 @@ export function Footer() {
                         © {new Date().getFullYear()} Defendra. Todos los derechos reservados.
                     </p>
                     <div className="flex flex-col gap-1 text-sm text-text-low mt-4">
-                        <a href="mailto:defendraco@gmail.com" className="hover:text-primary">defendraco@gmail.com</a>
-                        <a href="tel:+573107996793" className="hover:text-primary">+57 310 799 6793</a>
+                        <a href="mailto:info@defendra.app" className="hover:text-primary">info@defendra.app</a>
+                        <a href="tel:+573126226631" className="hover:text-primary">+57 312 622 6631</a>
                     </div>
                 </div>
                 <div className="space-y-2">
                     <h4 className="font-semibold">Producto</h4>
                     <ul className="space-y-1">
                         <li><Link href="/#solucion" className="text-sm text-text-mid hover:text-primary">Solución</Link></li>
-                        <li><Link href="/roles" className="text-sm text-text-mid hover:text-primary">Roles</Link></li>
-                        <li><Link href="/audiencias" className="text-sm text-text-mid hover:text-primary">Audiencias</Link></li>
+                        <li><Link href="/#roles" className="text-sm text-text-mid hover:text-primary">Roles</Link></li>
+                        <li><Link href="/#audiencias" className="text-sm text-text-mid hover:text-primary">Audiencias</Link></li>
                     </ul>
                 </div>
                 <div className="space-y-2">

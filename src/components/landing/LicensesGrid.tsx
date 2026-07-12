@@ -19,10 +19,12 @@ export default function LicensesGrid() {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
       {items.map((item, i) => (
-        <Card key={item.title} className="bg-card/80 border-border/30 p-5 text-center flex flex-col items-center justify-start group hover:bg-primary/10 transition-colors duration-300">
-            <item.icon className="h-10 w-10 text-primary mb-3 transition-transform duration-300 group-hover:scale-110" />
-            <div className="font-semibold text-text-high text-base">{item.title}</div>
-            <p className="mt-1 text-sm text-text-mid">{item.desc}</p>
+        <Card key={item.title} className="bg-white/5 border-white/10 backdrop-blur-sm p-5 text-center flex flex-col items-center justify-start group hover:bg-white/10 hover:shadow-[0_0_20px_rgba(0,112,243,0.2)] hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-primary/10 p-3 rounded-2xl mb-4 transition-transform duration-300 group-hover:scale-110">
+              <item.icon className="h-8 w-8 text-primary" />
+            </div>
+            <div className="font-semibold text-white text-base">{item.title}</div>
+            <p className="mt-2 text-sm text-slate-400">{item.desc}</p>
         </Card>
       ))}
     </div>

@@ -28,7 +28,7 @@ export function ValueProposition() {
   return (
     <Section 
         id="solucion" 
-        className="w-full"
+        className="w-full relative z-10"
         title="Una nueva era para la gestión de la seguridad"
         subtitle="Nuestra plataforma centraliza y automatiza la gestión de la seguridad, garantizando el cumplimiento normativo y optimizando cada aspecto de tus operaciones."
     >
