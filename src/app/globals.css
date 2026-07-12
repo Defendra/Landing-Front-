@@ -60,3 +60,9 @@
 
 .input{ @apply w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 outline-none
 focus:ring-2 focus:ring-blue-500/40 placeholder:text-slate-400; }
+
+/* Ocultar el badge de reCAPTCHA v3 (el texto legal ya está en el formulario) */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
