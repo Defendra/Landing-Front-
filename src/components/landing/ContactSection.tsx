@@ -14,8 +14,19 @@ function ContactForm() {
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    
+
     setIsLoading(true);
+
+    // Capturar datos del formulario de forma sincrónica antes de cualquier await
+    // (e.currentTarget se vuelve null después de operaciones async)
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      company: formData.get("company") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      tell_us: formData.get("message") as string,
+    };
 
     if (!executeRecaptcha) {
       console.error("Execute recaptcha not yet available");
@@ -25,23 +36,13 @@ function ContactForm() {
 
     try {
       const token = await executeRecaptcha("contact_form");
-      
-      const formData = new FormData(e.currentTarget);
-      const data = {
-        name: formData.get("name") as string,
-        company: formData.get("company") as string,
-        email: formData.get("email") as string,
-        phone: formData.get("phone") as string,
-        tell_us: formData.get("message") as string,
-        recaptcha_token: token,
-      };
 
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, recaptcha_token: token }),
       });
 
       if (response.ok) {
