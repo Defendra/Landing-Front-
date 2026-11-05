@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { markContactEmailSent, saveContactMessage } from "@/lib/db";
 
 function escapeHtml(value: unknown): string {
   return String(value ?? "")
@@ -50,7 +51,23 @@ export async function POST(request: Request) {
       );
     }
 
-    // 3. Enviar correo con Resend
+    // 3. Guardar en base de datos (si falla, igual intentamos enviar el correo)
+    let messageId: number | null = null;
+    try {
+      messageId = await saveContactMessage({
+        name: String(name ?? ""),
+        company: String(company ?? ""),
+        email: String(email ?? ""),
+        phone: String(phone ?? ""),
+        message: String(tell_us ?? ""),
+        recaptchaScore: typeof recaptchaData.score === "number" ? recaptchaData.score : null,
+        userAgent: request.headers.get("user-agent"),
+      });
+    } catch (dbError) {
+      console.error("Error guardando mensaje de contacto en DB:", dbError);
+    }
+
+    // 4. Enviar correo con Resend
     const resendApiKey = process.env.RESEND_API_KEY;
     if (!resendApiKey) {
       console.error("Falta la variable de entorno RESEND_API_KEY");
@@ -98,9 +115,20 @@ export async function POST(request: Request) {
       }),
     });
 
-    if (!resendResponse.ok) {
+    const emailSent = resendResponse.ok;
+    if (messageId !== null) {
+      await markContactEmailSent(messageId, emailSent).catch((dbError) =>
+        console.error("Error actualizando estado de correo en DB:", dbError)
+      );
+    }
+
+    if (!emailSent) {
       const errorText = await resendResponse.text();
       console.error("Error enviando correo con Resend:", resendResponse.status, errorText);
+      // Si quedó guardado en DB, el mensaje no se pierde: respondemos éxito
+      if (messageId !== null) {
+        return NextResponse.json({ success: true, message: "Mensaje recibido correctamente." });
+      }
       return NextResponse.json(
         { error: "No se pudo enviar el mensaje. Intenta de nuevo." },
         { status: 502 }
