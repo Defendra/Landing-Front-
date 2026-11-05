@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
@@ -10,12 +11,23 @@ import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recapt
 function ContactForm() {
   const [sent, setSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const { executeRecaptcha } = useGoogleReCaptcha();
+
+  // Tras enviar, mostrar confirmación unos segundos y dejar el botón listo para otro envío
+  useEffect(() => {
+    if (!sent) return;
+    const timer = setTimeout(() => setSent(false), 5000);
+    return () => clearTimeout(timer);
+  }, [sent]);
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     setIsLoading(true);
+    setErrorMessage(null);
+    setSent(false);
 
     // Capturar datos del formulario de forma sincrónica antes de cualquier await
     // (e.currentTarget se vuelve null después de operaciones async)
@@ -30,6 +42,7 @@ function ContactForm() {
 
     if (!executeRecaptcha) {
       console.error("Execute recaptcha not yet available");
+      setErrorMessage("No pudimos validar el formulario. Recarga la página e intenta de nuevo.");
       setIsLoading(false);
       return;
     }
@@ -47,18 +60,21 @@ function ContactForm() {
 
       if (response.ok) {
         setSent(true);
+        formRef.current?.reset();
       } else {
-        console.error("Error enviando formulario:", response.statusText);
+        const result = await response.json().catch(() => null);
+        setErrorMessage(result?.error || "No se pudo enviar el mensaje. Intenta de nuevo.");
       }
     } catch (error) {
       console.error("Error enviando formulario:", error);
+      setErrorMessage("Error de conexión. Revisa tu internet e intenta de nuevo.");
     } finally {
       setIsLoading(false);
     }
   }
 
   return (
-    <form onSubmit={submit} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+    <form ref={formRef} onSubmit={submit} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
         <div className="grid sm:grid-cols-2 gap-4">
           <Input required name="name" placeholder="Nombre completo" className="input bg-white/5 border-white/10 text-white placeholder:text-slate-500" />
           <Input required name="company" placeholder="Empresa" className="input bg-white/5 border-white/10 text-white placeholder:text-slate-500" />
@@ -73,7 +89,7 @@ function ContactForm() {
           </p>
           <Button 
             type="submit" 
-            disabled={isLoading || sent}
+            disabled={isLoading}
             className={`min-w-32 transition-colors duration-200 shadow-[0_0_15px_rgba(255,122,0,0.3)] ${
               sent 
                 ? 'bg-[#1DB954] hover:bg-[#1DB954] shadow-[0_0_15px_rgba(29,185,84,0.3)]' 
@@ -86,11 +102,30 @@ function ContactForm() {
                 Enviando...
               </div>
             ) : sent ? (
-              "¡Enviado!"
+              <span className="flex items-center gap-2 text-white font-medium">
+                <CheckCircle2 className="w-4 h-4" /> ¡Enviado!
+              </span>
+            ) : errorMessage ? (
+              <span className="text-white font-medium">Reintentar</span>
             ) : (
               <span className="text-white font-medium">Enviar Mensaje</span>
             )}
           </Button>
+        </div>
+
+        <div aria-live="polite">
+          {sent && (
+            <div className="mt-4 flex items-start gap-2 rounded-lg border border-[#1DB954]/30 bg-[#1DB954]/10 p-3 text-sm text-[#1DB954]">
+              <CheckCircle2 className="w-5 h-5 shrink-0" />
+              <span>¡Gracias! Recibimos tu mensaje y te contactaremos muy pronto.</span>
+            </div>
+          )}
+          {errorMessage && (
+            <div className="mt-4 flex items-start gap-2 rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-400">
+              <AlertCircle className="w-5 h-5 shrink-0" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
         </div>
     </form>
   );
