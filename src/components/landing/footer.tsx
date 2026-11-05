@@ -20,7 +20,7 @@ export function Footer() {
                     </p>
                     <div className="flex flex-col gap-1 text-sm text-text-low mt-4">
                         <a href="mailto:info@defendra.app" className="hover:text-primary">info@defendra.app</a>
-                        <a href="tel:+573126226631" className="hover:text-primary">+57 312 622 6631</a>
+                        <a href="tel:+573508577604" className="hover:text-primary">+57 350 857 7604</a>
                     </div>
                 </div>
                 <div className="space-y-2">

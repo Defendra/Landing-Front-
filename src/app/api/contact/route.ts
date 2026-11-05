@@ -1,5 +1,14 @@
 import { NextResponse } from "next/server";
 
+function escapeHtml(value: unknown): string {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -41,10 +50,62 @@ export async function POST(request: Request) {
       );
     }
 
-    // 3. (AQUÍ VA TU LÓGICA DE CORREO / BASE DE DATOS)
-    // Ya validamos que es humano. Aquí puedes usar Resend, Nodemailer, SendGrid, o guardar en DB.
-    console.log("Datos recibidos de humano legítimo:", { name, company, email, phone, tell_us });
-    console.log("Puntaje reCAPTCHA:", recaptchaData.score);
+    // 3. Enviar correo con Resend
+    const resendApiKey = process.env.RESEND_API_KEY;
+    if (!resendApiKey) {
+      console.error("Falta la variable de entorno RESEND_API_KEY");
+      return NextResponse.json(
+        { error: "Error de configuración del servidor." },
+        { status: 500 }
+      );
+    }
+
+    const from = process.env.EMAIL_FROM || "info@defendra.app";
+    const to = process.env.CONTACT_TO_EMAIL || "info@defendra.app";
+
+    const rows: [string, unknown][] = [
+      ["Nombre", name],
+      ["Empresa", company],
+      ["Correo", email],
+      ["Teléfono", phone],
+      ["Mensaje", tell_us],
+    ];
+    const html = `
+      <h2>Nuevo mensaje desde el formulario de contacto</h2>
+      <table cellpadding="6" style="border-collapse:collapse;font-family:sans-serif">
+        ${rows
+          .map(
+            ([label, value]) =>
+              `<tr><td style="font-weight:bold;vertical-align:top">${label}</td><td style="white-space:pre-wrap">${escapeHtml(value)}</td></tr>`
+          )
+          .join("")}
+      </table>
+      <p style="color:#888;font-size:12px">Puntaje reCAPTCHA: ${recaptchaData.score}</p>
+    `;
+
+    const resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: `Defendra Web <${from}>`,
+        to: [to],
+        reply_to: typeof email === "string" && email.includes("@") ? email : undefined,
+        subject: `Nuevo contacto web: ${String(name ?? "").slice(0, 80)}${company ? ` (${String(company).slice(0, 80)})` : ""}`,
+        html,
+      }),
+    });
+
+    if (!resendResponse.ok) {
+      const errorText = await resendResponse.text();
+      console.error("Error enviando correo con Resend:", resendResponse.status, errorText);
+      return NextResponse.json(
+        { error: "No se pudo enviar el mensaje. Intenta de nuevo." },
+        { status: 502 }
+      );
+    }
 
     // Responder con éxito
     return NextResponse.json({ success: true, message: "Mensaje recibido correctamente." });
